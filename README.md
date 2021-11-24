@@ -28,6 +28,7 @@
 * **git branch 'branchName'** - Create a new feature/ or fix/ branch
 
 * **git checkout 'branchName'** - Switch to a branch.
+* **git push --set-upstream origin 'branchName'** - Push **new** branch to git after creation.
 * Work on your feature or fix on the appropriate branch.
 * Test your changes
 * Frequently commit to your branch in order to save and track your progress
