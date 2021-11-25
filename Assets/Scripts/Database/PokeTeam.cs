@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PokeTeam : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _pokemons;
+    [SerializeField] public List<GameObject> _pokemons;
 
-    public PokeTeam()
+    private void Start()
     {
         _pokemons = new List<GameObject>();
     }
-
     public GameObject[] GetAllItems()
     {
         return _pokemons.ToArray();
