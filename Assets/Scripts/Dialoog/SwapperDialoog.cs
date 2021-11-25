@@ -5,42 +5,37 @@ using UnityEngine;
 public class SwapperDialoog : MonoBehaviour
 {
     [SerializeField] private DialoogTrigger _dialoogTrigger;
+    [SerializeField] private GameObject _pokemonRival;
+    [SerializeField] private GameObject _pokemonPlayer;
     [SerializeField] private int _timer;
 
     private string _swapRivalDialogue;
     private string _swapPlayerDialogue;
-    private int _startSwap;
 
+    public bool PorR;
 
     private void Start()
     {
-        //_swapRivalDialogue = rivalName + "sent out" + pokemon;
-        //_swapPlayerDialogue = "Go!" + pokemon;
+        PorR = false;
+        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
     }
 
-    private void Update()
+    public void StartSwapDia()
     {
-        if (_startSwap == 1)
-        {
-            SwapPokemonDia(false);
-            _startSwap = 2;
-        }
+        _dialoogTrigger.StartDialogue(_swapRivalDialogue);
+        Invoke("SwapPokemonDia", 5);
     }
 
-    public void SwapPokemonDia(bool PorR)
+    public void SwapPokemonDia()
     {
-        if (PorR)
+        if (PorR == true)
         {
             _dialoogTrigger.StartDialogue(_swapRivalDialogue);
         }
-        else if (PorR == false)
+        if (PorR == false)
         {
             _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
-        }
-
-        if(_startSwap == 0)
-        {
-            _startSwap = 1;
         }
     }
 

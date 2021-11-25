@@ -9,8 +9,6 @@ public class StartDialoog : MonoBehaviour
     [SerializeField] private DialoogTrigger _dialoogTrigger;
     [SerializeField] private SwapperDialoog _swapperDialoog;
 
-    private bool _porR = true;
-
     private void Start()
     {
         _dialoogTrigger.StartDialogue(_dialogue);        
@@ -20,7 +18,8 @@ public class StartDialoog : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            _swapperDialoog.SwapPokemonDia(_porR);
+            _swapperDialoog.StartSwapDia();
+            this.gameObject.GetComponent<StartDialoog>().enabled = false;
         }
     }
 
