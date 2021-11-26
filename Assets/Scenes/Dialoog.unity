@@ -439,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91dad3472d214c4bb086ff0c712d064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sentences: []
   _battleUI: {fileID: 1366303642}
 --- !u!4 &994431958
 Transform:
@@ -466,6 +465,7 @@ GameObject:
   - component: {fileID: 1083019832}
   - component: {fileID: 1083019834}
   - component: {fileID: 1083019833}
+  - component: {fileID: 1083019835}
   m_Layer: 0
   m_Name: TestDialoog
   m_TagString: Untagged
@@ -500,9 +500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialoogTrigger: {fileID: 994431957}
+  _baseDialoog: {fileID: 1083019835}
   _pokemonRival: {fileID: 711478593}
   _pokemonPlayer: {fileID: 1819723764}
   _timer: 0
+  PorR: 0
 --- !u!114 &1083019834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +521,19 @@ MonoBehaviour:
   _dialogue: Lets Go
   _dialoogTrigger: {fileID: 994431957}
   _swapperDialoog: {fileID: 1083019833}
+--- !u!114 &1083019835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083019831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cd6db3b28032a4fa2851a252b7b2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialoogTrigger: {fileID: 994431957}
 --- !u!1 &1366303640
 GameObject:
   m_ObjectHideFlags: 0

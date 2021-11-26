@@ -13,6 +13,7 @@ public class DialoogTrigger : MonoBehaviour
     public void StartDialogue(string _sentence)
     {
         _battleUI.text = _sentence;
+        Debug.Log(_sentence);
     }
 
 }

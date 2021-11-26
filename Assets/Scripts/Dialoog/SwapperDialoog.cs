@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwapperDialoog : MonoBehaviour
 {
     [SerializeField] private DialoogTrigger _dialoogTrigger;
+    [SerializeField] private BaseDialoog _baseDialoog;
     [SerializeField] private GameObject _pokemonRival;
     [SerializeField] private GameObject _pokemonPlayer;
     [SerializeField] private int _timer;
@@ -16,15 +17,24 @@ public class SwapperDialoog : MonoBehaviour
 
     private void Start()
     {
-        PorR = false;
-        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
-        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        PorR = true;
+        ChangeDialoog();
     }
 
     public void StartSwapDia()
     {
-        _dialoogTrigger.StartDialogue(_swapRivalDialogue);
-        Invoke("SwapPokemonDia", 5);
+        if (PorR == true)
+        {
+            _dialoogTrigger.StartDialogue(_swapRivalDialogue);
+            PorR = false;
+            Invoke("StartSwapDia", 5);
+        }
+        else if (PorR == false)
+        {
+            _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
+            _baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
+            Invoke("StartBaseDia",5);
+        }
     }
 
     public void SwapPokemonDia()
@@ -38,5 +48,18 @@ public class SwapperDialoog : MonoBehaviour
             _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
         }
     }
+
+    public void ChangeDialoog()
+    {
+        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+    }
+
+    private void StartBaseDia()
+    {
+        _baseDialoog.StartDialoog();
+    }
+
+   
 
 }
