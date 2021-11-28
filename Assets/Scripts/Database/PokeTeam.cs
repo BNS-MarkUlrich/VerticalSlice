@@ -8,8 +8,9 @@ public class PokeTeam : MonoBehaviour
 
     private void Start()
     {
-       // _pokemons = new List<GameObject>();
+        // _pokemons = new List<GameObject>();
     }
+
     public GameObject[] GetAllItems()
     {
         return _pokemons.ToArray();
