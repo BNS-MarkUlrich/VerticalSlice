@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 91232006}
   - component: {fileID: 91232005}
   m_Layer: 0
-  m_Name: TestDialoogObject
+  m_Name: DialoogObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,6 +605,7 @@ MonoBehaviour:
   - {fileID: 284697071}
   curHealth: 0
   healthSlider: {fileID: 770390931}
+  trainerName: 
   _nameText: {fileID: 1161166871}
   _genderText: {fileID: 758789016}
   _levelText: {fileID: 1921020534}
@@ -821,6 +822,7 @@ MonoBehaviour:
   - {fileID: 1521145583}
   curHealth: 0
   healthSlider: {fileID: 1677948756}
+  trainerName: BUG CATCHER RICK
   _nameText: {fileID: 786678819}
   _genderText: {fileID: 1346533661}
   _levelText: {fileID: 1540430573}
@@ -1019,6 +1021,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529026619}
   m_CullTransparentMesh: 1
+--- !u!1 &627516281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627516283}
+  - component: {fileID: 627516282}
+  m_Layer: 0
+  m_Name: TurnSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &627516282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627516281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915ec3ade2864d44ab48b237fa187a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  rival: {fileID: 440798666}
+  player: {fileID: 359794623}
+--- !u!4 &627516283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627516281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 413.0047, y: 305.2607, z: -2354.4055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671760770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,7 +2062,7 @@ RectTransform:
   - {fileID: 440798665}
   - {fileID: 2115173918}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2034,7 +2082,7 @@ GameObject:
   - component: {fileID: 1304449809}
   - component: {fileID: 1304449808}
   m_Layer: 0
-  m_Name: TestDialoog
+  m_Name: Dialoog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2067,9 +2115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialoogTrigger: {fileID: 91232005}
   _baseDialoog: {fileID: 1304449808}
-  _pokemonRival: {fileID: 440798664}
-  _pokemonPlayer: {fileID: 359794621}
-  _timer: 0
+  _pokemonRival: {fileID: 440798666}
+  _pokemonPlayer: {fileID: 359794623}
   PorR: 0
 --- !u!114 &1304449810
 MonoBehaviour:
@@ -2083,8 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed61ed9682d5c6b479a70959e45dd5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueTimer: 0
-  _dialogue: Lets Go
+  _dialogue: BUG CATCHER RICK would like to battle!
   _dialoogTrigger: {fileID: 91232005}
   _swapperDialoog: {fileID: 1304449809}
 --- !u!4 &1304449811
@@ -2244,7 +2290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346533659
 GameObject:
