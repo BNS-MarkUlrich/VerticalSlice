@@ -8,17 +8,14 @@ public class BasePokemon : MonoBehaviour
     public string gender;
     public string level;
     public int levelNum;
-    public int curHealth;
     //[SerializeField] private GameObject[] Attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
-    private void Update()
+    private void Start()
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
         level = "Lv" + levelNum.ToString();
-
-        curHealth = GetComponent<BaseHealthScript>()._curHealth;
     }
 
     private void SetGender()
