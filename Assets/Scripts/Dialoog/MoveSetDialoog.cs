@@ -13,8 +13,8 @@ public class MoveSetDialoog : MonoBehaviour
 
     public void ChangeMoveDia()
     {
-        _moveDialoogRival = "Foe " + _pokemonNameRival + " used " + _pokemonMoveRival; // Test: add back later?
-        _moveDialoogPlayer =  _pokemonNamePlayer + " used " + _pokemonMovePlayer; // Test: add back later?
+        _moveDialoogRival = "Foe " + _pokemonNameRival + "used" + _pokemonMoveRival;
+        _moveDialoogPlayer =  _pokemonNamePlayer + "used" + _pokemonMovePlayer;
     }
 
     public void StartDialogue()

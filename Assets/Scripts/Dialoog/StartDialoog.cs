@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartDialoog : MonoBehaviour
 {
+    [SerializeField]private int _dialogueTimer;
     [SerializeField] private string _dialogue;
     [SerializeField] private DialoogTrigger _dialoogTrigger;
     [SerializeField] private SwapperDialoog _swapperDialoog;
