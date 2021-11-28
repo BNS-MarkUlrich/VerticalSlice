@@ -57,7 +57,7 @@ public class SwapperDialoog : MonoBehaviour
 
     private void StartBaseDia()
     {
-        _baseDialoog.StartDialoog();
+        _baseDialoog.StartDialogue();
     }
 
    
