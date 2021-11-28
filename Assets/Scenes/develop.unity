@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 196040526}
   - component: {fileID: 196040527}
   m_Layer: 5
-  m_Name: HealthSlider
+  m_Name: RivalHealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,30 +434,18 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 837346030}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 20
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1637297842}
-        m_TargetAssemblyTypeName: PokemonUI, Assembly-CSharp
-        m_MethodName: GetCurHealth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &210741682
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,8 +603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialoogTrigger: {fileID: 1610224885}
   _baseDialoog: {fileID: 265736069}
-  _pokemonRival: {fileID: 0}
-  _pokemonPlayer: {fileID: 0}
+  _pokemonRival: {fileID: 1470570561}
+  _pokemonPlayer: {fileID: 1434911646}
   _timer: 0
   PorR: 0
 --- !u!114 &265736071
@@ -631,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed61ed9682d5c6b479a70959e45dd5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueTimer: 3
+  _dialogueTimer: 0
   _dialogue: Lets Go
   _dialoogTrigger: {fileID: 1610224885}
   _swapperDialoog: {fileID: 265736070}
@@ -739,7 +727,6 @@ GameObject:
   - component: {fileID: 326041537}
   - component: {fileID: 326041540}
   - component: {fileID: 326041539}
-  - component: {fileID: 326041538}
   m_Layer: 5
   m_Name: NameText
   m_TagString: Untagged
@@ -767,22 +754,6 @@ RectTransform:
   m_AnchoredPosition: {x: -16.400024, y: -26.199997}
   m_SizeDelta: {x: -80.60578, y: 10.996331}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &326041538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326041536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 326041539}
-  _pokemonInfo: 0
-  _pokeTeam: {fileID: 1470570561}
-  curHealth: 0
 --- !u!114 &326041539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,7 +967,6 @@ GameObject:
   - component: {fileID: 523095932}
   - component: {fileID: 523095934}
   - component: {fileID: 523095933}
-  - component: {fileID: 523095935}
   m_Layer: 5
   m_Name: NameText
   m_TagString: Untagged
@@ -1066,22 +1036,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523095931}
   m_CullTransparentMesh: 1
---- !u!114 &523095935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523095931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 523095933}
-  _pokemonInfo: 0
-  _pokeTeam: {fileID: 1434911646}
-  curHealth: 0
 --- !u!1 &692467020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1168,6 @@ GameObject:
   - component: {fileID: 773741478}
   - component: {fileID: 773741480}
   - component: {fileID: 773741479}
-  - component: {fileID: 773741481}
   m_Layer: 5
   m_Name: GenderText
   m_TagString: Untagged
@@ -1283,22 +1236,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773741477}
   m_CullTransparentMesh: 1
---- !u!114 &773741481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773741477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 773741479}
-  _pokemonInfo: 1
-  _pokeTeam: {fileID: 0}
-  curHealth: 0
 --- !u!1 &782018364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1418,6 @@ MonoBehaviour:
   gender: 
   level: 
   levelNum: 5
-  curHealth: 0
   _currenState: 1
 --- !u!1 &837346029
 GameObject:
@@ -1894,7 +1830,6 @@ MonoBehaviour:
   gender: 
   level: 
   levelNum: 6
-  curHealth: 0
   _currenState: 1
 --- !u!1 &1028442225
 GameObject:
@@ -2296,6 +2231,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pokemons:
   - {fileID: 797425415}
+  curHealth: 0
+  healthSlider: {fileID: 1957946435}
+  _nameText: {fileID: 523095933}
+  _genderText: {fileID: 773741479}
+  _levelText: {fileID: 1692192391}
+  _healthText: {fileID: 1637297840}
 --- !u!1 &1470570561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,7 +2289,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pokemons:
   - {fileID: 1013853195}
-  - {fileID: 0}
+  curHealth: 0
+  healthSlider: {fileID: 196040527}
+  _nameText: {fileID: 326041539}
+  _genderText: {fileID: 2034283314}
+  _levelText: {fileID: 1574263284}
+  _healthText: {fileID: 0}
 --- !u!1 &1486832699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2486,6 @@ GameObject:
   - component: {fileID: 1574263282}
   - component: {fileID: 1574263285}
   - component: {fileID: 1574263284}
-  - component: {fileID: 1574263283}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -2567,22 +2512,6 @@ RectTransform:
   m_AnchoredPosition: {x: -78, y: -27.6}
   m_SizeDelta: {x: -3.0315526, y: 6.493501}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1574263283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574263281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 1574263284}
-  _pokemonInfo: 2
-  _pokeTeam: {fileID: 1470570561}
-  curHealth: 0
 --- !u!114 &1574263284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,7 +2684,6 @@ GameObject:
   - component: {fileID: 1637297839}
   - component: {fileID: 1637297841}
   - component: {fileID: 1637297840}
-  - component: {fileID: 1637297842}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -2824,22 +2752,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637297838}
   m_CullTransparentMesh: 1
---- !u!114 &1637297842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637297838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 1637297840}
-  _pokemonInfo: 3
-  _pokeTeam: {fileID: 1434911646}
-  curHealth: 0
 --- !u!1 &1687570728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +2838,6 @@ GameObject:
   - component: {fileID: 1692192390}
   - component: {fileID: 1692192392}
   - component: {fileID: 1692192391}
-  - component: {fileID: 1692192393}
   m_Layer: 5
   m_Name: LevelText
   m_TagString: Untagged
@@ -2995,22 +2906,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692192389}
   m_CullTransparentMesh: 1
---- !u!114 &1692192393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692192389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 1692192391}
-  _pokemonInfo: 2
-  _pokeTeam: {fileID: 1434911646}
-  curHealth: 0
 --- !u!1 &1709355176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,9 +3213,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 20
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3410,9 +3305,8 @@ GameObject:
   - component: {fileID: 2034283312}
   - component: {fileID: 2034283315}
   - component: {fileID: 2034283314}
-  - component: {fileID: 2034283313}
   m_Layer: 5
-  m_Name: EnemyPokemonGenderText
+  m_Name: GenderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3437,22 +3331,6 @@ RectTransform:
   m_AnchoredPosition: {x: 80.9, y: 0.090717316}
   m_SizeDelta: {x: 22.6191, y: 37.156}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2034283313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034283311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a9dde279cafd704a99a68308ce57eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 2034283314}
-  _pokemonInfo: 1
-  _pokeTeam: {fileID: 0}
-  curHealth: 0
 --- !u!114 &2034283314
 MonoBehaviour:
   m_ObjectHideFlags: 0
