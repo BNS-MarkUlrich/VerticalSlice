@@ -19,7 +19,7 @@ public class TurnSystem : MonoBehaviour
                 // Do something
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    rival._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
+                    //rival._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
                     RivalTurn();
                 }
                 // !Do something
@@ -28,7 +28,7 @@ public class TurnSystem : MonoBehaviour
                 // Call RivalAI script
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    player._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
+                    //player._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
                     PlayerTurn();
                 }
                 // !Call RivalAI script

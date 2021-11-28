@@ -16,15 +16,15 @@ public class BaseHealthScript : MonoBehaviour
         _pokemon.Initialise(_maxHealth);
     }
 
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(5);
         }
-    }*/
+    }
 
-    public virtual void TakeDamage(int damageTaken) // Test: revert back later
+    protected virtual void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
         _pokemon.UpdateHP(_curHealth);
