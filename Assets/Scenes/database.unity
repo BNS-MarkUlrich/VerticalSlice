@@ -237,7 +237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1.3731, y: -12.9}
+  m_AnchoredPosition: {x: 1.3731, y: -12.900024}
   m_SizeDelta: {x: 827.0879, y: 185.7874}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &102051254
@@ -711,7 +711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1553611, y: 0.6558409}
   m_AnchorMax: {x: 0.7011806, y: 0.8801592}
-  m_AnchoredPosition: {x: 7.4210052, y: -15.811001}
+  m_AnchoredPosition: {x: 7.4210205, y: -15.811005}
   m_SizeDelta: {x: -80.8299, y: 9.0393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523095933
@@ -852,7 +852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.0535, y: 36.38227}
+  m_AnchoredPosition: {x: 27.053528, y: 36.382263}
   m_SizeDelta: {x: 54.1068, y: 115.676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743322836
@@ -1237,7 +1237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 38.74562, y: -0.40190125}
+  m_AnchoredPosition: {x: 38.745605, y: -0.401886}
   m_SizeDelta: {x: -166.0677, y: -45.899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901514304
@@ -1543,7 +1543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71272963, y: 0.5}
   m_AnchorMax: {x: 0.883, y: 0.8667299}
-  m_AnchoredPosition: {x: -2.300003, y: 2.8190002}
+  m_AnchoredPosition: {x: -2.2999878, y: 2.8190002}
   m_SizeDelta: {x: -0.29299927, y: -0.22309875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085537021
@@ -1776,7 +1776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.061000004, y: 0.529635}
   m_AnchorMax: {x: 0.5, y: 0.8108176}
-  m_AnchoredPosition: {x: -8.614, y: 4.8582}
+  m_AnchoredPosition: {x: -8.614014, y: 4.8582}
   m_SizeDelta: {x: -17.228, y: 9.7164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255177699
@@ -2613,7 +2613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 5.0972, y: 0}
+  m_AnchoredPosition: {x: 5.097229, y: 0}
   m_SizeDelta: {x: 416.1315, y: 176.2881}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1864174959
@@ -2856,8 +2856,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1637297842}
         m_TargetAssemblyTypeName: PokemonUI, Assembly-CSharp
-        m_MethodName: GetCurHealth
-        m_Mode: 1
+        m_MethodName: UpdateHP
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
