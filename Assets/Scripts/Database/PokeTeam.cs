@@ -13,6 +13,8 @@ public class PokeTeam : MonoBehaviour
     private int _targetStartHealth;
     private float _barHealth;
 
+    public string trainerName; // Test: add back later?
+
     [SerializeField] private Text _nameText;
     [SerializeField] private Text _genderText;
     [SerializeField] private Text _levelText;

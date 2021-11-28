@@ -9,7 +9,7 @@ public class BaseDialoog : MonoBehaviour
 
     public void ChangeDialoog(string pokemonName) 
     {
-        _baseDialoog = "What will " + pokemonName + "do";
+        _baseDialoog = "What will " + pokemonName + " do?"; // Test: add back later?
     }
 
     public void StartDialogue()

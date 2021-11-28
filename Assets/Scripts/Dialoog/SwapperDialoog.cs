@@ -6,17 +6,20 @@ public class SwapperDialoog : MonoBehaviour
 {
     [SerializeField] private DialoogTrigger _dialoogTrigger;
     [SerializeField] private BaseDialoog _baseDialoog;
-    [SerializeField] private GameObject _pokemonRival;
-    [SerializeField] private GameObject _pokemonPlayer;
-    [SerializeField] private int _timer;
+    [SerializeField] private PokeTeam _pokemonRival;
+    [SerializeField] private PokeTeam _pokemonPlayer;
 
     private string _swapRivalDialogue;
     private string _swapPlayerDialogue;
 
     public bool PorR;
 
+    private TurnSystem turnSys; // Test: add back later?
+
     private void Start()
     {
+        turnSys = FindObjectOfType<TurnSystem>(); // Test: add back later?
+        turnSys.currentState = TurnSystem.TurnSys.DialogueState; // Test: add back later?
         PorR = true;
         ChangeDialoog();
     }
@@ -32,7 +35,8 @@ public class SwapperDialoog : MonoBehaviour
         else if (PorR == false)
         {
             _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
-            _baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
+            _baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName); // Test: add back later?
+            turnSys.PlayerTurn(); // Test: add back later?
             Invoke("StartBaseDia",5);
         }
     }
@@ -51,8 +55,8 @@ public class SwapperDialoog : MonoBehaviour
 
     public void ChangeDialoog()
     {
-        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
-        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapRivalDialogue = _pokemonRival.trainerName + " sent out " + _pokemonRival._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!"; // Test: add back later?
+        _swapPlayerDialogue = "Go! " + _pokemonPlayer._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!"; // Test: add back later?
     }
 
     private void StartBaseDia()
