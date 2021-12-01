@@ -5,11 +5,15 @@ using UnityEngine;
 public class BaseHealthScript : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
-    [SerializeField] private int _curHealth;
+    [SerializeField] public int _curHealth;
+
+    private PokeTeam _pokemon;
 
     void Start()
     {
         _curHealth = _maxHealth;
+        _pokemon = GetComponentInParent<PokeTeam>();
+        _pokemon.Initialise(_maxHealth);
     }
 
     private void Update()
@@ -23,7 +27,7 @@ public class BaseHealthScript : MonoBehaviour
     public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
-
+        _pokemon.UpdateHP(_curHealth);
         if (_curHealth <= 0)
         {
             Faint();
@@ -34,5 +38,7 @@ public class BaseHealthScript : MonoBehaviour
     {
         // Doe hier de Faint dingen
         Debug.Log("Ik faint");
+        // Temp
+        _curHealth = _maxHealth;
     }
 }

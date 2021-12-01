@@ -5,43 +5,61 @@ using UnityEngine;
 public class SwapperDialoog : MonoBehaviour
 {
     [SerializeField] private DialoogTrigger _dialoogTrigger;
+    [SerializeField] private BaseDialoog _baseDialoog;
+    [SerializeField] private GameObject _pokemonRival;
+    [SerializeField] private GameObject _pokemonPlayer;
     [SerializeField] private int _timer;
 
     private string _swapRivalDialogue;
     private string _swapPlayerDialogue;
-    private int _startSwap;
 
+    public bool PorR;
 
     private void Start()
     {
-        //_swapRivalDialogue = rivalName + "sent out" + pokemon;
-        //_swapPlayerDialogue = "Go!" + pokemon;
+        PorR = true;
+        ChangeDialoog();
     }
 
-    private void Update()
+    public void StartSwapDia()
     {
-        if (_startSwap == 1)
-        {
-            SwapPokemonDia(false);
-            _startSwap = 2;
-        }
-    }
-
-    public void SwapPokemonDia(bool PorR)
-    {
-        if (PorR)
+        if (PorR == true)
         {
             _dialoogTrigger.StartDialogue(_swapRivalDialogue);
+            PorR = false;
+            Invoke("StartSwapDia", 5);
         }
         else if (PorR == false)
         {
             _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
-        }
-
-        if(_startSwap == 0)
-        {
-            _startSwap = 1;
+            _baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
+            Invoke("StartBaseDia",5);
         }
     }
+
+    public void SwapPokemonDia()
+    {
+        if (PorR == true)
+        {
+            _dialoogTrigger.StartDialogue(_swapRivalDialogue);
+        }
+        if (PorR == false)
+        {
+            _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
+        }
+    }
+
+    public void ChangeDialoog()
+    {
+        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+    }
+
+    private void StartBaseDia()
+    {
+        _baseDialoog.StartDialogue();
+    }
+
+   
 
 }

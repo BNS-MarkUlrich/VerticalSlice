@@ -29,27 +29,22 @@
 
 ## Basic Git Workflow
 
-* **git pull origin develop** - Pull the latest changes from branch develop
+* **git pull origin develop** - Pull the latest changes from branch develop.
 
-* **git branch 'branchName'** - Create a new feature/ or fix/ branch
+* **git branch branchName** - Create a new feature/ or fix/ branch.
 
-* **git checkout 'branchName'** - Switch to a branch.
-* **git push --set-upstream origin 'branchName'** - Push **new** branch to git after creation.
+* **git checkout branchName** - Switch to a branch.
+* **git push --set-upstream origin branchName** - Push **new** branch to git after creation.
 * Work on your feature or fix on the appropriate branch.
-* Test your changes
-* Frequently commit to your branch in order to save and track your progress
+* Test your changes.
+* Frequently commit to your branch in order to save and track your progress.
 
-* **git status** - Check the status of your branch, files you modified or created
+* **git status** - Check the status of your branch, files you modified or created.
 
-* **git add** - Use git add 'filename' to add files to your commit. Use git add . to add everything you changed to the commit.
+* **git add** - Use git **add .** to add everything you changed to the commit.
 
 * **git commit -m "Commit message"** - Write the commit message for your changes. Be concise and descriptive.
 
 * **git push** - Push your changes to the branch.
-* If you get stuck or want to switch to something else, you can always git checkout to another branch
+* If you get stuck or want to switch to something else, you can always git checkout to another branch.
 * Once you are finished with the fix or feature, commit and push everything to the branch.
-
-* **git checkout develop** - Switch to the develop branch
-
-* **git merge 'branchName'** - Once you are in develop, use this command to merge your feature/fix branch(branchName) into develop. Once merged, push to develop.
-* Repeat the process for every new feature or fix!

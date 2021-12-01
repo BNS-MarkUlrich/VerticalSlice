@@ -5,30 +5,30 @@ using UnityEngine;
 public class BasePokemon : MonoBehaviour
 {
     public string pokemonName;
-    private string gender;
+    public string gender;
     public string level;
     public int levelNum;
     //[SerializeField] private GameObject[] Attacks;
-    [SerializeField] private States _currenState = States.Genderless;
+    [SerializeField] private Genders _currenState = Genders.Male;
 
     private void Start()
     {
-        level = "Lv" + levelNum.ToString();
         SetGender();
-        pokemonName = gameObject.name + gender;
+        pokemonName = gameObject.name.ToUpper();
+        level = "Lv" + levelNum.ToString();
     }
 
     private void SetGender()
     {
         switch (_currenState)
         {
-            case States.Genderless:
+            case Genders.Genderless:
                 gender = "⚥";
                 break;
-            case States.Male:
+            case Genders.Male:
                 gender = "♂";
                 break;
-            case States.Female:
+            case Genders.Female:
                 gender = "♀";
                 break;
             default:
@@ -36,7 +36,7 @@ public class BasePokemon : MonoBehaviour
         }
     }
 
-    public enum States
+    public enum Genders
     {
         Genderless,
         Male,
