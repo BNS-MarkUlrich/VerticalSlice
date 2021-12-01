@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class Tackle : MonoBehaviour
 {
-    public int dmgValue;
-    public int accuracy;
+    [SerializeField] private int _dmgValue = 35;
+    [SerializeField] private int _accuracy = 85;
 
-    public GameObject target;
+    private BasePokemon basePokemon;
+    private GameObject target;
 
-    private int maxPP = 35;
+    [SerializeField] public int maxPP { get; private set; } = 35;
     [SerializeField] public int ppAmount { get; private set; }
+    [SerializeField] private string moveType = "NORMAL";
 
-
+    private int level;
+    private double attack;
+    private int enemyDefence;
 
     public void TackleAttack()
     {
-        int totalDamage = dmgValue;
+        level = GetComponent<BasePokemon>().level;
+        attack = GetComponent<BasePokemon>().trueAttack;
+        enemyDefence = GetComponent<BasePokemon>().enemyDefence;
+
+        target = GetComponent<BasePokemon>().targetPokemon;
+
+        int totalDamage = (int)((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
         int hitOrMiss = Random.Range(1, 100);
 
-        if (hitOrMiss <= accuracy)
+        if (hitOrMiss <= _accuracy)
         {
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
         }
@@ -27,6 +37,6 @@ public class Tackle : MonoBehaviour
         {
             Debug.Log("Attack Missed");
         }
-        ppAmount -= 1;
+        _ppAmount -= 1;
     }
 }
