@@ -19,14 +19,17 @@ public class Tackle : BaseAttack
         _accuracy = 85;
     }
 
+    private void Update()
+    {
+        level = GetComponentInParent<BasePokemon>().level;
+        attack = GetComponentInParent<BasePokemon>().trueAttack;
+        enemyDefence = GetComponentInParent<BasePokemon>().enemyDefence;
+
+        target = GetComponentInParent<BasePokemon>().targetPokemon;
+    }
+
     public override void Attack()
     {
-        level = GetComponent<BasePokemon>().level;
-        attack = GetComponent<BasePokemon>().trueAttack;
-        enemyDefence = GetComponent<BasePokemon>().enemyDefence;
-        
-        target = GetComponent<BasePokemon>().targetPokemon;
-
         int totalDamage = (int)((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
         int hitOrMiss = Random.Range(1, 100);
 

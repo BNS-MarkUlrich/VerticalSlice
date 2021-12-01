@@ -6,7 +6,7 @@ public class RivalAIBehaviour : MonoBehaviour
 {
     [SerializeField] private PokeTeam rivalTeam;
     private BasePokemon rivalPokemon;
-    private List<GameObject> attacks;
+    private BaseAttack[] attacks;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,6 @@ public class RivalAIBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        attacks = GetComponent<PokeTeam>().oppositeTeam._pokemons[0].GetComponent<BasePokemon>().attacks;
+        attacks = GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().attacks;
     }
 }
