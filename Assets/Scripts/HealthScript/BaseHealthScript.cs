@@ -20,7 +20,7 @@ public class BaseHealthScript : MonoBehaviour
         }
     }
 
-    protected virtual void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
 
