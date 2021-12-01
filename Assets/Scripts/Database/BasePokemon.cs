@@ -20,7 +20,7 @@ public class BasePokemon : MonoBehaviour
     //[SerializeField] private GameObject[] Attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
-    private void Start()
+    private void Awake()
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
