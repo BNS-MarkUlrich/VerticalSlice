@@ -27,7 +27,7 @@ public class PokeTeam : MonoBehaviour
     {
         _nameText.text = _pokemons[0].GetComponent<BasePokemon>().pokemonName;
         _genderText.text = _pokemons[0].GetComponent<BasePokemon>().gender;
-        _levelText.text = _pokemons[0].GetComponent<BasePokemon>().level;
+        _levelText.text = "lv" + _pokemons[0].GetComponent<BasePokemon>().level;
         if (_healthText != null)
         {
             _healthText.text = curHealth + "/ " + _targetStartHealth;

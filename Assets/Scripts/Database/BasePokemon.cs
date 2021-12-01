@@ -6,8 +6,17 @@ public class BasePokemon : MonoBehaviour
 {
     public string pokemonName;
     public string gender;
-    public string level;
-    public int levelNum;
+    public int level;
+
+    public int _attack { get; private set; }
+    public int _defence { get; private set; }
+    public int trueAttack { get; private set; }
+    public int enemyDefence { get; private set; }
+    public int _growlCount;
+    private double _attackModifier;
+
+    [SerializeField] private PokeTeam pokeTeam;
+    public GameObject targetPokemon { get; private set; }
     //[SerializeField] private GameObject[] Attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
@@ -15,7 +24,47 @@ public class BasePokemon : MonoBehaviour
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
-        level = "Lv" + levelNum.ToString();
+    }
+
+    private void Update()
+    {
+        targetPokemon = pokeTeam.GetComponent<PokeTeam>()._pokemons[0];
+        enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
+    }
+
+    private void getGrowled()
+    {
+        _growlCount += 1;
+
+        switch (_growlCount)
+        {
+            case 0:
+                _attackModifier = 1;
+                break;
+            case 1:
+                _attackModifier = 0.66;
+                break;
+            case 2:
+                _attackModifier = 0.5;
+                break;
+            case 3:
+                _attackModifier = 0.4;
+                break;
+            case 4:
+                _attackModifier = 0.33;
+                break;
+            case 5:
+                _attackModifier = 0.285;
+                break;
+            case 6:
+                _attackModifier = 0.25;
+                break;
+            case 7:
+                _growlCount = 6;
+                break;
+        }
+
+        trueAttack = (int)_attack * (int)_attackModifier;
     }
 
     private void SetGender()
