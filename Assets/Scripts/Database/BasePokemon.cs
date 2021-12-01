@@ -40,25 +40,28 @@ public class BasePokemon : MonoBehaviour
         {
             case 0:
                 _attackModifier = 1;
-                return;
+                break;
             case 1:
                 _attackModifier = 0.66;
-                return;
+                break;
             case 2:
                 _attackModifier = 0.5;
-                return;
+                break;
             case 3:
                 _attackModifier = 0.4;
-                return;
+                break;
             case 4:
                 _attackModifier = 0.33;
-                return;
+                break;
             case 5:
                 _attackModifier = 0.285;
-                return;
+                break;
             case 6:
                 _attackModifier = 0.25;
-                return;
+                break;
+            case 7:
+                _growlCount = 6;
+                break;
         }
 
         trueAttack = _attack * _attackModifier;

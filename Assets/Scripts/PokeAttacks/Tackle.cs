@@ -37,6 +37,6 @@ public class Tackle : MonoBehaviour
         {
             Debug.Log("Attack Missed");
         }
-        _ppAmount -= 1;
+        ppAmount -= 1;
     }
 }
