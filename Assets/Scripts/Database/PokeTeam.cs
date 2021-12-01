@@ -18,6 +18,8 @@ public class PokeTeam : MonoBehaviour
     [SerializeField] private Text _levelText;
     [SerializeField] private Text _healthText;
 
+    public PokeTeam oppositeTeam;
+
     public GameObject[] GetAllItems()
     {
         return _pokemons.ToArray();
