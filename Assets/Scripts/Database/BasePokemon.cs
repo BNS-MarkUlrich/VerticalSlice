@@ -40,7 +40,7 @@ public class BasePokemon : MonoBehaviour
         {
             if (attacks[0] != null)
             {
-                attacks[0].GetComponent<Tackle>().TackleAttack();
+                attacks[0].GetComponent<BaseAttack>().Attack();
             }
         }*/
     }
