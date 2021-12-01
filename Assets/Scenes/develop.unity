@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueTimer: 0
-  _dialogue: Lets Go
+  _dialogue: Lets Go!
   _dialoogTrigger: {fileID: 1610224885}
   _swapperDialoog: {fileID: 265736070}
 --- !u!4 &265736072
@@ -671,8 +671,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 71.112885, y: -36.23723}
-  m_SizeDelta: {x: -338.0661, y: -132.0885}
+  m_AnchoredPosition: {x: 67.42499, y: -34.799}
+  m_SizeDelta: {x: -327.09, y: -122.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &300279852
 MonoBehaviour:
