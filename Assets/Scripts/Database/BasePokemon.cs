@@ -10,7 +10,7 @@ public class BasePokemon : MonoBehaviour
 
     public int _attack { get; private set; }
     public int _defence { get; private set; }
-    public double trueAttack { get; private set; }
+    public int trueAttack { get; private set; }
     public int enemyDefence { get; private set; }
     public int _growlCount;
     private double _attackModifier;
@@ -64,7 +64,7 @@ public class BasePokemon : MonoBehaviour
                 break;
         }
 
-        trueAttack = _attack * _attackModifier;
+        trueAttack = (int)_attack * (int)_attackModifier;
     }
 
     private void SetGender()
