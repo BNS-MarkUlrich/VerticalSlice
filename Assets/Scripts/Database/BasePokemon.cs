@@ -18,16 +18,20 @@ public class BasePokemon : MonoBehaviour
     public GameObject targetPokemon { get; private set; }
 
     private PokeTeam rivalTeam;
-    public List<GameObject> attacks;
+    public BaseAttack[] attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
     private void Awake()
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
+        trueAttack = 15; // Test
+        _defence = 12; // Test
+    }
 
-        //_attack = 15; // Test
-        //enemyDefence = 12; // Test
+    private void Start()
+    {
+        attacks = GetComponentsInChildren<BaseAttack>();
     }
 
     private void Update()
@@ -35,14 +39,13 @@ public class BasePokemon : MonoBehaviour
         rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
         targetPokemon = rivalTeam._pokemons[0];
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (attacks[0] != null)
+            if (attacks[0] != null && attacks.Length > 0)
             {
                 attacks[0].GetComponent<BaseAttack>().Attack();
             }
-        }*/
+        }
     }
 
     private void getGrowled()
