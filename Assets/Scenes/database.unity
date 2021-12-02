@@ -603,8 +603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialoogTrigger: {fileID: 1610224885}
   _baseDialoog: {fileID: 265736069}
-  _pokemonRival: {fileID: 1470570561}
-  _pokemonPlayer: {fileID: 1434911646}
+  _pokemonRival: {fileID: 0}
+  _pokemonPlayer: {fileID: 0}
   _timer: 0
   PorR: 0
 --- !u!114 &265736071
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed61ed9682d5c6b479a70959e45dd5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueTimer: 0
+  _dialogueTimer: 3
   _dialogue: Lets Go
   _dialoogTrigger: {fileID: 1610224885}
   _swapperDialoog: {fileID: 265736070}
