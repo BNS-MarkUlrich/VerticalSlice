@@ -33,14 +33,9 @@ public class TurnSystem : MonoBehaviour
                 break;
             case TurnSys.RivalTurn:
                 // Call RivalAI script
-                rivalAI.RivalAIBehaviour();
+                rivalAI.Invoke("RivalAIBehaviour", 1);
+                currentState = TurnSys.PlayerTurn;
                 // !Call RivalAI script
-
-                /*if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    //player._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
-                    PlayerTurn();
-                }*/
                 break;
             case TurnSys.DialogueState:
                 // Do something

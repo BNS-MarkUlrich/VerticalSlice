@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class RivalAI : MonoBehaviour
 {
-    private BaseAttack[] attacks;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    [SerializeField] private BaseAttack[] attacks;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +14,9 @@ public class RivalAI : MonoBehaviour
 
     public void RivalAIBehaviour()
     {
+        int attackChoice = (int)Random.Range(0, attacks.Length);
 
+        attacks[attackChoice].Attack();
+        Debug.Log(attacks[attackChoice]);
     }
 }
