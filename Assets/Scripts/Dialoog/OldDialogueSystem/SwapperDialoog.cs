@@ -32,7 +32,7 @@ public class SwapperDialoog : MonoBehaviour
         else if (PorR == false)
         {
             _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
-            _baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
+            //_baseDialoog.ChangeDialoog(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
             Invoke("StartBaseDia",5);
         }
     }
@@ -57,7 +57,7 @@ public class SwapperDialoog : MonoBehaviour
 
     private void StartBaseDia()
     {
-        _baseDialoog.StartDialogue();
+        //_baseDialoog.StartDialogue();
     }
 
    
