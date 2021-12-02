@@ -16,7 +16,7 @@ public class Tackle : BaseAttack
         _ppMax = 35;
 
         _dmgValue = 35;
-        _accuracy = 85;
+        _accuracy = 95;
     }
 
     private void Update()
@@ -28,11 +28,14 @@ public class Tackle : BaseAttack
         target = GetComponentInParent<BasePokemon>().targetPokemon;
     }
 
+    public override void Attack()
+    {
         int totalDamage = ((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
         int hitOrMiss = Random.Range(1, 100);
 
         if (hitOrMiss <= _accuracy)
         {
+            //play attack animation
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             Debug.Log(totalDamage);
         }
