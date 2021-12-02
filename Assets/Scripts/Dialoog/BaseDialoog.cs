@@ -7,13 +7,9 @@ public class BaseDialoog : MonoBehaviour
     private string _baseDialoog;
     [SerializeField] private DialoogTrigger _dialoogTrigger;
 
-    public void ChangeDialoog(string pokemonName) 
+    public void StartDialogue(string pokemonName)
     {
         _baseDialoog = "What will " + pokemonName + " do?";
-    }
-
-    public void StartDialogue()
-    {
         _dialoogTrigger.StartDialogue(_baseDialoog);
     }
 }
