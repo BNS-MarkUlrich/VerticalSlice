@@ -20,6 +20,7 @@ public class BaseHealthScript : MonoBehaviour
     {
         _curHealth -= damageTaken;
         _pokemon.UpdateHP(_curHealth);
+        //play damaged animation
         if (_curHealth <= 0)
         {
             Faint();

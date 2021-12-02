@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 1779719551
+    locked: 0
+  - name: grass layer
+    uniqueID: 377487309
+    locked: 0
+  - name: transition
+    uniqueID: 2655245217
+    locked: 0
