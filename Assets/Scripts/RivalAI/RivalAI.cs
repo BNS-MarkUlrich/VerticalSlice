@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RivalAIBehaviour : MonoBehaviour
+public class RivalAI : MonoBehaviour
 {
-    [SerializeField] private PokeTeam rivalTeam;
-    private BasePokemon rivalPokemon;
     private BaseAttack[] attacks;
 
     // Start is called before the first frame update
@@ -18,5 +16,10 @@ public class RivalAIBehaviour : MonoBehaviour
     void Update()
     {
         attacks = GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().attacks;
+    }
+
+    public void RivalAIBehaviour()
+    {
+
     }
 }

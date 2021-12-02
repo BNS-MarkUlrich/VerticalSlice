@@ -11,6 +11,13 @@ public class TurnSystem : MonoBehaviour
 
     private BaseDialoog baseDialoog;
 
+    private RivalAI rivalAI;
+
+    private void Start()
+    {
+        rivalAI = rival.GetComponent<RivalAI>();
+    }
+
     private void Update()
     {
         switch (currentState)
@@ -26,12 +33,14 @@ public class TurnSystem : MonoBehaviour
                 break;
             case TurnSys.RivalTurn:
                 // Call RivalAI script
-                if (Input.GetKeyDown(KeyCode.Space))
+                rivalAI.RivalAIBehaviour();
+                // !Call RivalAI script
+
+                /*if (Input.GetKeyDown(KeyCode.Space))
                 {
                     //player._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
                     PlayerTurn();
-                }
-                // !Call RivalAI script
+                }*/
                 break;
             case TurnSys.DialogueState:
                 // Do something
