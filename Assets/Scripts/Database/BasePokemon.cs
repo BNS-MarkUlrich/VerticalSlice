@@ -15,21 +15,37 @@ public class BasePokemon : MonoBehaviour
     public int _growlCount;
     private double _attackModifier;
 
-    [SerializeField] private PokeTeam pokeTeam;
     public GameObject targetPokemon { get; private set; }
-    //[SerializeField] private GameObject[] Attacks;
+
+    private PokeTeam rivalTeam;
+    public BaseAttack[] attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
     private void Awake()
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
+        trueAttack = 15; // Test
+        _defence = 12; // Test
+    }
+
+    private void Start()
+    {
+        attacks = GetComponentsInChildren<BaseAttack>();
     }
 
     private void Update()
     {
-        targetPokemon = pokeTeam.GetComponent<PokeTeam>()._pokemons[0];
+        rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
+        targetPokemon = rivalTeam._pokemons[0];
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (attacks[0] != null && attacks.Length > 0)
+            {
+                attacks[0].GetComponent<BaseAttack>().Attack();
+            }
+        }
     }
 
     private void getGrowled()

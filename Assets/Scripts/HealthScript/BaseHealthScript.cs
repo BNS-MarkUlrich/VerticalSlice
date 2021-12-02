@@ -16,14 +16,6 @@ public class BaseHealthScript : MonoBehaviour
         _pokemon.Initialise(_maxHealth);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
-    }
-
     public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
