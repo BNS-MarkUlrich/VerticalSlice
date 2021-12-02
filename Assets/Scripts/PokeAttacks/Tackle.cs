@@ -7,7 +7,7 @@ public class Tackle : BaseAttack
     private GameObject target;
 
     private int level;
-    private double attack;
+    private int attack;
     private int enemyDefence;
 
     private void Start()
@@ -27,7 +27,7 @@ public class Tackle : BaseAttack
         
         target = GetComponent<BasePokemon>().targetPokemon;
 
-        int totalDamage = (int)((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
+        int totalDamage = ((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
         int hitOrMiss = Random.Range(1, 100);
 
         if (hitOrMiss <= _accuracy)
