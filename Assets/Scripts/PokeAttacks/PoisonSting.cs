@@ -13,7 +13,7 @@ public class PoisonSting : BaseAttack
     private void Start()
     {
         _moveType = "normal";
-        _ppMax = 35;
+        //_ppMax = 35;
 
         _dmgValue = 15;
         _accuracy = 100;

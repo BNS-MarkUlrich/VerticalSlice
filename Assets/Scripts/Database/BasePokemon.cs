@@ -39,13 +39,6 @@ public class BasePokemon : MonoBehaviour
         rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
         targetPokemon = rivalTeam._pokemons[0];
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (attacks[0] != null && attacks.Length > 0)
-            {
-                attacks[0].GetComponent<BaseAttack>().Attack();
-            }
-        }
     }
 
     private void getGrowled()
