@@ -6,27 +6,22 @@ using UnityEngine.UI;
 
 public class OptionScript : MonoBehaviour
 {
-    private int optionsMenu;
-    private bool fight;
-    private bool bag;
-    private bool pokemon;
-    private bool run;
-    private bool go;
-
     [SerializeField] private GameObject arrowFight;
     [SerializeField] private GameObject arrowBag;
     [SerializeField] private GameObject arrowPokemon;
     [SerializeField] private GameObject arrowRun;
-
+    [SerializeField] private GameObject fightOptions;
+    [SerializeField] private GameObject arrowTackle;
+    [SerializeField] private GameObject arrowGrowl;
+    private int options;
 
     public FightUI currentSelection = FightUI.FIGHT;
-
+    public MoveUI currenMove = MoveUI.TACKLE;
     private void Start()
     {
-        fight = true;
-        go = true;
+        fightOptions.gameObject.SetActive(false);
+        options = 1;
     }
-
     private void Update()
     {
 
@@ -37,21 +32,27 @@ public class OptionScript : MonoBehaviour
                 arrowBag.gameObject.SetActive(false);
                 arrowPokemon.gameObject.SetActive(false);
                 arrowRun.gameObject.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
                 {
                     currentSelection = FightUI.BAG;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
                 {
                     currentSelection = FightUI.BAG;
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
                 {
                     currentSelection = FightUI.POKEMON;
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
                 {
                     currentSelection = FightUI.POKEMON;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 1)
+                {
+                    fightOptions.gameObject.SetActive(true);
+                    options = 2;
                 }
                 break;
             case FightUI.BAG:
@@ -59,19 +60,21 @@ public class OptionScript : MonoBehaviour
                 arrowPokemon.gameObject.SetActive(false);
                 arrowBag.gameObject.SetActive(true);
                 arrowRun.gameObject.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                fightOptions.gameObject.SetActive(false);
+
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
                 }
@@ -81,19 +84,21 @@ public class OptionScript : MonoBehaviour
                 arrowPokemon.gameObject.SetActive(true);
                 arrowBag.gameObject.SetActive(false);
                 arrowRun.gameObject.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                fightOptions.gameObject.SetActive(false);
+
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
                 }
@@ -103,21 +108,72 @@ public class OptionScript : MonoBehaviour
                 arrowPokemon.gameObject.SetActive(false);
                 arrowBag.gameObject.SetActive(false);
                 arrowRun.gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                fightOptions.gameObject.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
                 {
                     currentSelection = FightUI.POKEMON;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
                 {
                     currentSelection = FightUI.POKEMON;
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
                 {
                     currentSelection = FightUI.BAG;
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
                 {
                     currentSelection = FightUI.BAG;
+                }
+                break;
+        }
+        switch (currenMove)
+        {
+            case MoveUI.TACKLE:
+                arrowTackle.gameObject.SetActive(true);
+                arrowGrowl.gameObject.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 3)
+                {
+                    currenMove = MoveUI.GROWL;
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 3)
+                {
+                    currenMove = MoveUI.GROWL;
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
+                {
+                    fightOptions.gameObject.SetActive(false);
+                    options = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 2)
+                {
+                    options = 3;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3)
+                {
+                    Debug.Log("bulbasaur used tackle");
+                }
+                break;
+            case MoveUI.GROWL:
+                arrowTackle.gameObject.SetActive(false);
+                arrowGrowl.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 3)
+                {
+                    currenMove = MoveUI.TACKLE;
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 3)
+                {
+                    currenMove = MoveUI.TACKLE;
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
+                {
+                    fightOptions.gameObject.SetActive(false);
+                    currenMove = MoveUI.TACKLE;
+                    options = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3)
+                {
+                    Debug.Log("bulbasaur used growl");
                 }
                 break;
         }
@@ -128,6 +184,11 @@ public class OptionScript : MonoBehaviour
         FIGHT,
         POKEMON,
         BAG,
-        RUN
+        RUN,
+    }
+    public enum MoveUI
+    {
+        TACKLE,
+        GROWL
     }
 }

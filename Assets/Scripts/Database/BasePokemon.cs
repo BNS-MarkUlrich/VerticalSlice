@@ -48,7 +48,7 @@ public class BasePokemon : MonoBehaviour
         }
     }
 
-    private void getGrowled()
+    public void GetGrowled()
     {
         _growlCount += 1;
 
