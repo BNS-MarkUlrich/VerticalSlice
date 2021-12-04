@@ -9,17 +9,23 @@ public class WinDialogue : DialogueBase
         sentences.Add("PLAYER defeated BUG CATCHER RICK");
         sentences.Add("No! " + "CATERPIE can't hack it!");
         sentences.Add("Player got ₽72 for winning!");
+        dialoogTrigger.StartDialogue(sentences[index]);
+        _timer = 5;
+        index = 1;
     }
     void Update()
     {
         if (index >= sentences.Count)
         {
-            Invoke("EndGame", 5);
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Debug.Log("Endgame");
+            }
+        }
+        else
+        {
+            AutoOrNot();
         }
     }
 
-    private void EndGame()
-    {
-        //laat de game eindigen 
-    }
 }

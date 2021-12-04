@@ -13,6 +13,9 @@ public class LoseDialogue : DialogueBase
         sentences.Add("Player paid ₽40 as the prize money...");
         sentences.Add("... ... ... ...");
         sentences.Add("Player whited out!");
+        dialoogTrigger.StartDialogue(sentences[index]);
+        _timer = 5;
+        index = 1;
     }
 
     // Update is called once per frame
@@ -22,10 +25,14 @@ public class LoseDialogue : DialogueBase
         {
             Invoke("EndGame", 5);
         }
+        else
+        {
+            AutoOrNot();
+        }
     }
 
     private void EndGame()
     {
-        //laat de game eindigen 
+        Debug.Log("EndGame");
     }
 }

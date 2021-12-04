@@ -11,24 +11,19 @@ public class DialogueBase : MonoBehaviour
     [SerializeField] private bool[] _autoArray;
     //int
     public int index;
-    private float _timer;
+    public float _timer;
     //scripts
-    [SerializeField] private DialoogTrigger _dialoogTrigger;
+    public DialoogTrigger dialoogTrigger;
 
-    private void Start()
-    {
-        _dialoogTrigger.StartDialogue(sentences[index]);
-        index += 1;
-    }
 
-    private void Update()
+    public void AutoOrNot()
     {
+        isAutomatic = _autoArray[index];
         if (isAutomatic)
         {
             if (_timer <= 0)
             {
-                _dialoogTrigger.StartDialogue(sentences[index]);
-                isAutomatic = _autoArray[index];
+                dialoogTrigger.StartDialogue(sentences[index]);
                 index += 1;
                 _timer = 5;
             }
@@ -42,7 +37,7 @@ public class DialogueBase : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 Debug.Log("werkt");
-                _dialoogTrigger.StartDialogue(sentences[index]);
+                dialoogTrigger.StartDialogue(sentences[index]);
                 index += 1;
             }
         }
