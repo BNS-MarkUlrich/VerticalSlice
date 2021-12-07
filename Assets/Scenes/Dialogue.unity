@@ -1261,6 +1261,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592161839}
   m_CullTransparentMesh: 1
+--- !u!1 &658779023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 658779025}
+  - component: {fileID: 658779024}
+  m_Layer: 0
+  m_Name: TurnSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &658779024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658779023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915ec3ade2864d44ab48b237fa187a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 2
+  rival: {fileID: 1470570563}
+  player: {fileID: 1434911648}
+--- !u!4 &658779025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658779023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 294.3735, y: 298.11313, z: -70.66737}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &692467020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,8 +3111,12 @@ GameObject:
   - component: {fileID: 1610224886}
   - component: {fileID: 1610224885}
   - component: {fileID: 1610224889}
+  - component: {fileID: 1610224893}
+  - component: {fileID: 1610224892}
+  - component: {fileID: 1610224891}
   - component: {fileID: 1610224888}
   - component: {fileID: 1610224887}
+  - component: {fileID: 1610224890}
   m_Layer: 0
   m_Name: DialoogSystem
   m_TagString: Untagged
@@ -3108,16 +3158,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610224884}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 148d01fd72a17894ba62b6af339b5539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutomatic: 0
+  isAutomatic: 1
   sentences: []
-  _autoArray: 
+  _autoArray: 000000010000
   index: 0
-  _dialoogTrigger: {fileID: 1610224885}
+  _timer: 0
+  dialoogTrigger: {fileID: 1610224885}
 --- !u!114 &1610224888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,10 +3183,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAutomatic: 0
   sentences: []
-  _autoArray: 
+  _autoArray: 000001
   index: 0
-  _dialoogTrigger: {fileID: 1610224885}
+  _timer: 0
+  dialoogTrigger: {fileID: 1610224885}
 --- !u!114 &1610224889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610224884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449844115a6e833439ce899adff18843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAutomatic: 0
+  sentences: []
+  _autoArray: 000101
+  index: 0
+  _timer: 0
+  dialoogTrigger: {fileID: 1610224885}
+  _pokemonRival: {fileID: 1470570561}
+  _pokemonPlayer: {fileID: 1434911646}
+  _baseDialoog: {fileID: 1610224893}
+--- !u!114 &1610224890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3144,13 +3217,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610224884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449844115a6e833439ce899adff18843, type: 3}
+  m_Script: {fileID: 11500000, guid: c2a3ee8e1f4a057478843d23ce49fd86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutomatic: 0
-  sentences: []
-  _autoArray: 00
-  index: 0
+--- !u!114 &1610224891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610224884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf76e0a24ff2754ea11a6bb28adbfb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610224892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610224884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2a7188b21f875498974d4b6b890b88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialoogTrigger: {fileID: 1610224885}
+  _baseDialoog: {fileID: 1610224893}
+  _pokemonRival: {fileID: 1470570561}
+  _pokemonPlayer: {fileID: 1434911646}
+--- !u!114 &1610224893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610224884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cd6db3b28032a4fa2851a252b7b2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _dialoogTrigger: {fileID: 1610224885}
 --- !u!1 &1632567366
 GameObject:

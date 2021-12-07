@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnSystem : MonoBehaviour
 {
-    public TurnSys currentState;
+    public TurnSys currentState = TurnSys.DialogueState;
 
     [SerializeField] private PokeTeam rival;
     [SerializeField] private PokeTeam player;
