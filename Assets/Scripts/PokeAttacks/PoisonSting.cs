@@ -12,8 +12,8 @@ public class PoisonSting : BaseAttack
 
     private void Start()
     {
-        _moveType = "normal";
-        //_ppMax = 35;
+        _moveType = "poison";
+        _ppMax = 35;
 
         _dmgValue = 15;
         _accuracy = 100;
@@ -35,6 +35,7 @@ public class PoisonSting : BaseAttack
 
         if (hitOrMiss <= _accuracy)
         {
+            //play attack animation
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             Debug.Log(totalDamage);
         }
