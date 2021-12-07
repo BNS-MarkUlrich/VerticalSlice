@@ -10,7 +10,7 @@ public class WinDialogue : DialogueBase
         sentences.Add("No! " + "CATERPIE can't hack it!");
         sentences.Add("Player got ₽72 for winning!");
         dialoogTrigger.StartDialogue(sentences[index]);
-        _timer = 5;
+        _timer = 3; // Mark Edit
         index = 1;
     }
     void Update()

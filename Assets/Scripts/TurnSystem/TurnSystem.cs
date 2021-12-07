@@ -9,37 +9,76 @@ public class TurnSystem : MonoBehaviour
     [SerializeField] private PokeTeam rival;
     [SerializeField] private PokeTeam player;
 
-    private BaseDialoog baseDialoog;
+    public List<BaseAttack> attackTurns;
+
+    [SerializeField] private GameObject dialogueSystem;
 
     private RivalAI rivalAI;
+
+    public bool controls; //{ get; private set; }
+
+    [SerializeField] private float timer = 2;
+    private float maxTimer;
 
     private void Start()
     {
         rivalAI = rival.GetComponent<RivalAI>();
+        maxTimer = timer;
     }
 
     private void Update()
     {
-        switch (currentState)
+        switch (currentState) 
         {
             case TurnSys.PlayerTurn:
                 // Do something
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    //rival._pokemons[0].GetComponent<BaseHealthScript>().TakeDamage(3);
-                    RivalTurn();
-                }
+                controls = true;
+                FindObjectOfType<OptionScript>().optionsMenu.SetActive(true);
                 // !Do something
                 break;
             case TurnSys.RivalTurn:
                 // Call RivalAI script
-                rivalAI.Invoke("RivalAIBehaviour", 1);
-                currentState = TurnSys.PlayerTurn;
+                controls = false;
+                rivalAI.Invoke("RivalAIBehaviour", 0);
+
+                dialogueSystem.GetComponent<BaseDialoog>().StartDialogue(player._pokemons[0].name);
+                PlayerTurn();
                 // !Call RivalAI script
                 break;
             case TurnSys.DialogueState:
                 // Do something
-
+                controls = false;
+                FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
+                // !Do something
+                break;
+            case TurnSys.RivalAttackState:
+                // Do something
+                controls = false;
+                FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
+                attackTurns[0].Attack();
+                AttackTurn();
+                // !Do something
+                break;
+            case TurnSys.PlayerAttackState:
+                // Do something
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    attackTurns[1].Attack();
+                    attackTurns.Clear();
+                    timer = maxTimer;
+                    currentState = TurnSys.PostAttackState;
+                }
+                // !Do something
+                break;
+            case TurnSys.PostAttackState:
+                // Do something
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = maxTimer;
+                    RivalTurn();
+                }
                 // !Do something
                 break;
             default:
@@ -57,10 +96,18 @@ public class TurnSystem : MonoBehaviour
         currentState = TurnSys.RivalTurn;
     }
 
+    public void AttackTurn()
+    {
+        currentState = TurnSys.PlayerAttackState;
+    }
+
     public enum TurnSys
     {
         PlayerTurn,
         RivalTurn,
-        DialogueState
+        DialogueState,
+        RivalAttackState,
+        PlayerAttackState,
+        PostAttackState
     }
 }

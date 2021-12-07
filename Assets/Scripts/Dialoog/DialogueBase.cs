@@ -25,7 +25,7 @@ public class DialogueBase : MonoBehaviour
             {
                 dialoogTrigger.StartDialogue(sentences[index]);
                 index += 1;
-                _timer = 5;
+                _timer = 3; // Mark Edit
             }
             else
             {

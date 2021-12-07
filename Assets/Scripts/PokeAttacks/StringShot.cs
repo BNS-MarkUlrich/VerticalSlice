@@ -10,9 +10,12 @@ public class StringShot : BaseAttack
     {
         _moveType = "bug";
         _ppMax = 40;
+        _ppAmount = _ppMax; // Mark Added
 
         _dmgValue = 0;
         _accuracy = 95;
+
+        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
     }
     private void Update()
     {
@@ -26,6 +29,9 @@ public class StringShot : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            // Mark Begin
+            FindObjectOfType<UseMoveDialogue>().UseMove("STRING SHOT", pokemonName.ToUpper());
+            // Mark End
         }
         else
         {

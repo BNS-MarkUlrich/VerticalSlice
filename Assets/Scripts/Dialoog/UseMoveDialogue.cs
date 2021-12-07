@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseMoveDialogue : MonoBehaviour
 {
-    private DialoogTrigger _dialoogTrigger;
+    [SerializeField] private DialoogTrigger _dialoogTrigger;
 
     public void UseMove(string moveName, string pokemonName)
     {

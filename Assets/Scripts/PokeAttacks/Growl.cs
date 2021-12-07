@@ -10,9 +10,12 @@ public class Growl : BaseAttack
     {
         _moveType = "normal";
         _ppMax = 40;
+        _ppAmount = _ppMax; // Mark Added
 
         _dmgValue = 0;
         _accuracy = 100;
+
+        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
     }
     private void Update()
     {
@@ -26,6 +29,9 @@ public class Growl : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            // Mark Begin
+            FindObjectOfType<UseMoveDialogue>().UseMove("GROWL", pokemonName.ToUpper());
+            // Mark End
             target.GetComponent<BasePokemon>().GetGrowled();
         }
         else

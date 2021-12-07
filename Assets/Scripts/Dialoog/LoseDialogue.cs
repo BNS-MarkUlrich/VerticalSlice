@@ -14,7 +14,7 @@ public class LoseDialogue : DialogueBase
         sentences.Add("... ... ... ...");
         sentences.Add("Player whited out!");
         dialoogTrigger.StartDialogue(sentences[index]);
-        _timer = 5;
+        _timer = 3; // Mark Edit
         index = 1;
     }
 
