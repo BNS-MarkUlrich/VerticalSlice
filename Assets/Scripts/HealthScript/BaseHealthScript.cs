@@ -16,18 +16,11 @@ public class BaseHealthScript : MonoBehaviour
         _pokemon.Initialise(_maxHealth);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
-    }
-
-    protected virtual void TakeDamage(int damageTaken)
+    public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
         _pokemon.UpdateHP(_curHealth);
+        //play damaged animation
         if (_curHealth <= 0)
         {
             Faint();
