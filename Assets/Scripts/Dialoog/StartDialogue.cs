@@ -13,7 +13,7 @@ public class StartDialogue : DialogueBase
 
     private void Start()
     {
-        _activateBaseTimer = 5;
+        _activateBaseTimer = 3; // Mark Edit
         sentences.Add("BUG CATCHER RICK would like to battle!");
         sentences.Add("BUG CATCHER RICK sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!");
         sentences.Add("Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!");
@@ -29,7 +29,7 @@ public class StartDialogue : DialogueBase
             if(_activateBaseTimer <= 0)
             {
                 _baseDialoog.StartDialogue(_pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName);
-                FindObjectOfType<TurnSystem>().currentState = TurnSystem.TurnSys.PlayerTurn;
+                FindObjectOfType<TurnSystem>().currentState = TurnSystem.TurnSys.RivalTurn;
                 this.gameObject.GetComponent<StartDialogue>().enabled = false;
             }
         }

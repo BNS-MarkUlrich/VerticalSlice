@@ -16,7 +16,10 @@ public class RivalAI : MonoBehaviour
     {
         int attackChoice = (int)Random.Range(0, attacks.Length);
 
-        attacks[attackChoice].Attack();
-        Debug.Log(attacks[attackChoice]);
+        // Mark Begin
+        //attacks[attackChoice].Attack();
+        FindObjectOfType<TurnSystem>().attackTurns.Add(attacks[attackChoice]);
+        //Debug.Log(attacks[attackChoice]);
+        // Mark End
     }
 }
