@@ -13,7 +13,7 @@ public class Tackle : BaseAttack
     private void Start()
     {
         _moveType = "normal";
-        _ppMax = 35;
+        //_ppMax = 35;
 
         _dmgValue = 35;
         _accuracy = 95;

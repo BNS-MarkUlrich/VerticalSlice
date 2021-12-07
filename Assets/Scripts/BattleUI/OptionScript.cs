@@ -11,135 +11,144 @@ public class OptionScript : MonoBehaviour
     [SerializeField] private GameObject arrowPokemon;
     [SerializeField] private GameObject arrowRun;
     [SerializeField] private GameObject fightOptions;
-    [SerializeField] private GameObject arrowTackle;
-    [SerializeField] private GameObject arrowGrowl;
+    [SerializeField] private GameObject arrowAttack1;
+    [SerializeField] private GameObject arrowAttack2;
+    [SerializeField] private GameObject arrowAttack3;
+    [SerializeField] private GameObject arrowAttack4;
+
+    [SerializeField] private Text textPP;
+    [SerializeField] private Text[] attackTexts;
+    [SerializeField] private BaseAttack[] attacks;
+    [SerializeField] private PokeTeam pokeTeam;
+    private GameObject pokemon;
+    private int amountPP1;
+    private int amountPP2;
+    private int amountPP3;
+    private int amountPP4;
+
     private int options;
 
     public FightUI currentSelection = FightUI.FIGHT;
-    public MoveUI currenMove = MoveUI.TACKLE;
+    public MoveUI currenMove = MoveUI.Attack1;
     private void Start()
     {
         fightOptions.gameObject.SetActive(false);
         options = 1;
+        arrowFight.gameObject.SetActive(true);
+        arrowAttack1.gameObject.SetActive(true);
     }
     private void Update()
     {
-
+        pokemon = pokeTeam.GetComponent<PokeTeam>()._pokemons[0];
+        attacks = pokemon.GetComponent<BasePokemon>().attacks;
+        // navigating the main menu 
         switch (currentSelection)
         {
             case FightUI.FIGHT:
-                arrowFight.gameObject.SetActive(true);
-                arrowBag.gameObject.SetActive(false);
-                arrowPokemon.gameObject.SetActive(false);
-                arrowRun.gameObject.SetActive(false);
+                if ((Input.GetKeyDown(KeyCode.RightArrow)|| Input.GetKeyDown(KeyCode.LeftArrow) ) && options == 1)
+                {
+                    currentSelection = FightUI.BAG;
+                    arrowBag.gameObject.SetActive(true);
+                    arrowFight.gameObject.SetActive(false);
+                }
+                else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) && options == 1)
+                {
+                    currentSelection = FightUI.POKEMON;
+                    arrowFight.gameObject.SetActive(false);
+                    arrowPokemon.gameObject.SetActive(true);
+                }
 
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
-                {
-                    currentSelection = FightUI.BAG;
-                }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
-                {
-                    currentSelection = FightUI.BAG;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
-                {
-                    currentSelection = FightUI.POKEMON;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
-                {
-                    currentSelection = FightUI.POKEMON;
-                }
                 else if (Input.GetKeyDown(KeyCode.X) && options == 1)
                 {
                     fightOptions.gameObject.SetActive(true);
+                    
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (attacks.Length <= i)
+                        {
+                            attackTexts[i].text = "-";
+                        }
+                        else
+                        {
+                            attackTexts[i].text = attacks[i].name.ToUpper();
+                            
+                        }
+                    }
+
                     options = 2;
                 }
                 break;
+
             case FightUI.BAG:
-                arrowFight.gameObject.SetActive(false);
-                arrowPokemon.gameObject.SetActive(false);
-                arrowBag.gameObject.SetActive(true);
-                arrowRun.gameObject.SetActive(false);
-                fightOptions.gameObject.SetActive(false);
-
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
+                    arrowBag.gameObject.SetActive(false);
+                    arrowFight.gameObject.SetActive(true);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
-                {
-                    currentSelection = FightUI.FIGHT;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
+                else if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
-                {
-                    currentSelection = FightUI.RUN;
+                    arrowBag.gameObject.SetActive(false);
+                    arrowRun.gameObject.SetActive(true);
                 }
                 break;
+
             case FightUI.POKEMON:
-                arrowFight.gameObject.SetActive(false);
-                arrowPokemon.gameObject.SetActive(true);
-                arrowBag.gameObject.SetActive(false);
-                arrowRun.gameObject.SetActive(false);
-                fightOptions.gameObject.SetActive(false);
-
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 1)
                 {
                     currentSelection = FightUI.RUN;
+                    arrowPokemon.gameObject.SetActive(false);
+                    arrowRun.gameObject.SetActive(true);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
-                {
-                    currentSelection = FightUI.RUN;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
+                else if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && options == 1)
                 {
                     currentSelection = FightUI.FIGHT;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
-                {
-                    currentSelection = FightUI.FIGHT;
+                    arrowPokemon.gameObject.SetActive(false);
+                    arrowFight.gameObject.SetActive(true);
                 }
                 break;
+
             case FightUI.RUN:
-                arrowFight.gameObject.SetActive(false);
-                arrowPokemon.gameObject.SetActive(false);
-                arrowBag.gameObject.SetActive(false);
-                arrowRun.gameObject.SetActive(true);
-                fightOptions.gameObject.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 1)
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 1)
                 {
                     currentSelection = FightUI.POKEMON;
+                    arrowRun.gameObject.SetActive(false);
+                    arrowPokemon.gameObject.SetActive(true);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 1)
-                {
-                    currentSelection = FightUI.POKEMON;
-                }
-                else if (Input.GetKeyDown(KeyCode.UpArrow) && options == 1)
+                else if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && options == 1)
                 {
                     currentSelection = FightUI.BAG;
-                }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) && options == 1)
-                {
-                    currentSelection = FightUI.BAG;
+                    arrowRun.gameObject.SetActive(false);
+                    arrowBag.gameObject.SetActive(true);
                 }
                 break;
         }
+
+
+
+        // navigating the moves
         switch (currenMove)
         {
-            case MoveUI.TACKLE:
-                arrowTackle.gameObject.SetActive(true);
-                arrowGrowl.gameObject.SetActive(false);
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 3)
+            case MoveUI.Attack1:
+                int amountPPAttack1;
+                amountPP1 = attacks[0].GetComponent<BaseAttack>()._ppMax;
+                amountPPAttack1 = attacks[0].GetComponent<BaseAttack>()._ppAmount;
+                textPP.text = amountPPAttack1 + "/" + amountPP1;
+
+                if (attacks.Length >= 2 && options == 3 && options == 3 && (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
                 {
-                    currenMove = MoveUI.GROWL;
+                    currenMove = MoveUI.Attack2;
+                    arrowAttack1.gameObject.SetActive(false);
+                    arrowAttack2.gameObject.SetActive(true);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 3)
+                else if (attacks.Length >= 3 && options == 3 && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)))
                 {
-                    currenMove = MoveUI.GROWL;
+                    currenMove = MoveUI.Attack3;
+                    arrowAttack1.gameObject.SetActive(false);
+                    arrowAttack3.gameObject.SetActive(true);
                 }
+
                 else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
                 {
                     fightOptions.gameObject.SetActive(false);
@@ -149,36 +158,144 @@ public class OptionScript : MonoBehaviour
                 {
                     options = 3;
                 }
-                else if (Input.GetKeyDown(KeyCode.X) && options == 3)
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3 && amountPPAttack1 >= 1)
                 {
+                    if (attacks[0] != null && attacks.Length > 0)
+                    {
+                        attacks[0].Attack();
+                    }
                     Debug.Log("bulbasaur used tackle");
                 }
+                else if (Input.GetKeyDown(KeyCode.X) && amountPPAttack1 <= 0)
+                {
+                    Debug.Log("don't have enough for tackle");
+                } 
+                
+
                 break;
-            case MoveUI.GROWL:
-                arrowTackle.gameObject.SetActive(false);
-                arrowGrowl.gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.RightArrow) && options == 3)
+
+            case MoveUI.Attack2:
+                arrowAttack1.gameObject.SetActive(false);
+                arrowAttack2.gameObject.SetActive(true);
+                int amountPPAttack2;
+                amountPP2 = attacks[1].GetComponent<BaseAttack>()._ppMax;
+                amountPPAttack2 = attacks[1].GetComponent<BaseAttack>()._ppAmount;
+                textPP.text = amountPPAttack2 + "/" + amountPP2;
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 3)
                 {
-                    currenMove = MoveUI.TACKLE;
+                    currenMove = MoveUI.Attack1;
+                    arrowAttack2.gameObject.SetActive(false);
+                    arrowAttack1.gameObject.SetActive(true);
+                    
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) && options == 3)
+                else if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) && options == 3 && attacks.Length >= 4)
                 {
-                    currenMove = MoveUI.TACKLE;
+                    currenMove = MoveUI.Attack4;
+                    arrowAttack2.gameObject.SetActive(false);
+                    arrowAttack4.gameObject.SetActive(true);
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
+                {
+                    currenMove = MoveUI.Attack1;
+                    fightOptions.gameObject.SetActive(false);
+                    arrowAttack2.gameObject.SetActive(false);
+                    arrowAttack1.gameObject.SetActive(true);
+                    options = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3 && amountPPAttack2 >= 1)
+                {
+                    if (attacks[1] != null && attacks.Length > 0)
+                    {
+                        attacks[1].Attack();
+                    }
+                    Debug.Log("bulbasaur used growl");
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && amountPPAttack2 <= 0)
+                {
+                    Debug.Log("don't have enough for growl");
+                }
+                break;
+
+            case MoveUI.Attack3:
+                int amountPPAttack3;
+                amountPP2 = attacks[2].GetComponent<BaseAttack>()._ppMax;
+                amountPPAttack3 = attacks[2].GetComponent<BaseAttack>()._ppAmount;
+                textPP.text = amountPPAttack3 + "/" + amountPP2;
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 3 && attacks.Length >= 4)
+                {
+                    currenMove = MoveUI.Attack4;
+                    arrowAttack3.gameObject.SetActive(false);
+                    arrowAttack4.gameObject.SetActive(true);
+                }
+                else if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && options == 3)
+                {
+                    currenMove = MoveUI.Attack1;
+                    arrowAttack3.gameObject.SetActive(false);
+                    arrowAttack1.gameObject.SetActive(true);
                 }
                 else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
                 {
                     fightOptions.gameObject.SetActive(false);
-                    currenMove = MoveUI.TACKLE;
+                    arrowAttack3.gameObject.SetActive(false);
+                    arrowAttack1.gameObject.SetActive(true);
+                    currenMove = MoveUI.Attack1;
                     options = 1;
                 }
-                else if (Input.GetKeyDown(KeyCode.X) && options == 3)
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3 && amountPPAttack3 >= 1)
                 {
+                    if (attacks[2] != null && attacks.Length > 0)
+                    {
+                        attacks[2].Attack();
+                    }
                     Debug.Log("bulbasaur used growl");
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && amountPPAttack3 <= 0)
+                {
+                    Debug.Log("don't have enough for growl");
+                }
+                break;
+
+            case MoveUI.Attack4:
+                int amountPPAttack4;
+                amountPP2 = attacks[3].GetComponent<BaseAttack>()._ppMax;
+                amountPPAttack4 = attacks[3].GetComponent<BaseAttack>()._ppAmount;
+                textPP.text = amountPPAttack4 + "/" + amountPP2;
+                if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && options == 3)
+                {
+                    currenMove = MoveUI.Attack3;
+                    arrowAttack4.gameObject.SetActive(false);
+                    arrowAttack3.gameObject.SetActive(true);
+                }
+                if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && options == 3)
+                {
+                    currenMove = MoveUI.Attack2;
+                    arrowAttack4.gameObject.SetActive(false);
+                    arrowAttack2.gameObject.SetActive(true);
+                }
+                else if (Input.GetKeyDown(KeyCode.Escape) && options == 3)
+                {
+                    fightOptions.gameObject.SetActive(false);
+                    arrowAttack4.gameObject.SetActive(false);
+                    arrowAttack1.gameObject.SetActive(true);
+                    currenMove = MoveUI.Attack1;
+                    options = 1;
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && options == 3 && amountPPAttack4 >= 1)
+                {
+                    if (attacks[3] != null && attacks.Length > 0)
+                    {
+                        attacks[3].Attack();
+                    }
+                    Debug.Log("bulbasaur used growl");
+                }
+                else if (Input.GetKeyDown(KeyCode.X) && amountPPAttack4 <= 0)
+                {
+                    Debug.Log("don't have enough for growl");
                 }
                 break;
         }
     }
-
+    // all the options of main menu
     public enum FightUI
     {
         FIGHT,
@@ -186,9 +303,12 @@ public class OptionScript : MonoBehaviour
         BAG,
         RUN,
     }
+    // all the options of the moves
     public enum MoveUI
     {
-        TACKLE,
-        GROWL
+        Attack1,
+        Attack2,
+        Attack3,
+        Attack4
     }
 }
