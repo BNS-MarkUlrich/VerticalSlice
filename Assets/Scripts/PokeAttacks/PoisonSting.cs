@@ -12,11 +12,14 @@ public class PoisonSting : BaseAttack
 
     private void Start()
     {
-        _moveType = "normal";
-        //_ppMax = 35;
+        _moveType = "poison";
+        _ppMax = 35;
+        _ppAmount = _ppMax; // Mark Added
 
         _dmgValue = 15;
         _accuracy = 100;
+
+        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
     }
 
     private void Update()
@@ -35,6 +38,10 @@ public class PoisonSting : BaseAttack
 
         if (hitOrMiss <= _accuracy)
         {
+            //play attack animation
+            // Mark Begin
+            FindObjectOfType<UseMoveDialogue>().UseMove("POISON STING", pokemonName.ToUpper());
+            // Mark End
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             Debug.Log(totalDamage);
         }

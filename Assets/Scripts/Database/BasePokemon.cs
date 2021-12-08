@@ -41,7 +41,7 @@ public class BasePokemon : MonoBehaviour
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
     }
 
-    private void getGrowled()
+    public void GetGrowled()
     {
         _growlCount += 1;
 

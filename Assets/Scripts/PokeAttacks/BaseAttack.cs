@@ -12,5 +12,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected string _moveType;
 
+    protected string pokemonName;
+
     public abstract void Attack();
 }
