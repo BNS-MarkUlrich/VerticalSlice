@@ -438,6 +438,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1595962976}
     m_Modifications:
+    - target: {fileID: 8697700658281932669, guid: 8e7c53908ec5dab48bb6df850af89a60, type: 3}
+      propertyPath: _audioscript
+      value: 
+      objectReference: {fileID: 586762947}
     - target: {fileID: 8697700658281932670, guid: 8e7c53908ec5dab48bb6df850af89a60, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1204,6 +1208,9 @@ MonoBehaviour:
   faint: {fileID: 8300000, guid: 0bf69dd792fcb6a47aabb60635611664, type: 3}
   buttonPress: {fileID: 8300000, guid: b2a40a91f375a0f4dafa1c6a2af93905, type: 3}
   pokeball: {fileID: 8300000, guid: 609811ccd263daf4b88c80a72a6d899b, type: 3}
+  bulbCry: {fileID: 8300000, guid: 32d1e7a3f2fc4ce459992a438dd0f3f6, type: 3}
+  weedleCry: {fileID: 8300000, guid: ec3e8d2276535fa418bc534b2eafeee5, type: 3}
+  caterpieCry: {fileID: 8300000, guid: f2a2252ef6239c24fbbe1dda4884a6a2, type: 3}
   audioSource: {fileID: 586762945}
 --- !u!1 &656394202
 GameObject:
@@ -1903,6 +1910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1595962976}
     m_Modifications:
+    - target: {fileID: 7281742423062511000, guid: 7bd5a3d1f6f19794faf79768268a3c63, type: 3}
+      propertyPath: _audioscript
+      value: 
+      objectReference: {fileID: 586762947}
     - target: {fileID: 7281742423062511001, guid: 7bd5a3d1f6f19794faf79768268a3c63, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3081,6 +3092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tackle
       objectReference: {fileID: 0}
+    - target: {fileID: 6247845116090073169, guid: 5d95df6c5ec897f4bba20bc4b632f8b1, type: 3}
+      propertyPath: _audioscript
+      value: 
+      objectReference: {fileID: 586762947}
     - target: {fileID: 6247845116090073170, guid: 5d95df6c5ec897f4bba20bc4b632f8b1, type: 3}
       propertyPath: m_RootOrder
       value: 0
