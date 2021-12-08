@@ -8,8 +8,8 @@ public class BasePokemon : MonoBehaviour
     public string gender;
     public int level;
 
-    public int _attack { get; private set; }
-    public int _defence { get; private set; }
+    public int _attack;
+    public int _defence;
     public int trueAttack { get; private set; }
     public int enemyDefence { get; private set; }
     public int _growlCount;
@@ -25,8 +25,6 @@ public class BasePokemon : MonoBehaviour
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
-        trueAttack = 15; // Test
-        _defence = 12; // Test
     }
 
     private void Start()

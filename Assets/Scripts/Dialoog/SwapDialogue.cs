@@ -14,13 +14,13 @@ public class SwapDialogue : MonoBehaviour
 
     public void SwapRival()
     {
-        _swapRivalDialogue = "sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapRivalDialogue = "BUG CATCHER RICK sent out " + _pokemonRival.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!";
         _dialoogTrigger.StartDialogue(_swapRivalDialogue);
     }
 
     public void SwapPlayer()
     {
-        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName;
+        _swapPlayerDialogue = "Go! " + _pokemonPlayer.GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().pokemonName + "!";
         _dialoogTrigger.StartDialogue(_swapPlayerDialogue);
     }
 }
