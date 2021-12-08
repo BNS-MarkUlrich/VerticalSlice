@@ -40,14 +40,13 @@ public class Tackle : BaseAttack
         {
             //play attack animation
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
-            // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("TACKLE", pokemonName.ToUpper());
-            // Mark End
-            Debug.Log(totalDamage);
+            //Debug.Log(totalDamage);
         }
         else
         {
-            Debug.Log("Attack Missed");
+            FindObjectOfType<UseMoveDialogue>().MissMove(pokemonName.ToUpper()); // Mark Added
+            Debug.Log(pokemonName.ToUpper() + "Missed" + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
     }

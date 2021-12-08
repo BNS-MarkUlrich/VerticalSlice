@@ -39,15 +39,14 @@ public class PoisonSting : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
-            // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("POISON STING", pokemonName.ToUpper());
-            // Mark End
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
-            Debug.Log(totalDamage);
+            //Debug.Log(totalDamage);
         }
         else
         {
-            Debug.Log("Attack Missed");
+            FindObjectOfType<UseMoveDialogue>().MissMove(pokemonName.ToUpper()); // Mark Added
+            Debug.Log(pokemonName.ToUpper() + " Missed " + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
     }
