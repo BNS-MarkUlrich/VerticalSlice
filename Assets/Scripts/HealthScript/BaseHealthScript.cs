@@ -41,9 +41,7 @@ public class BaseHealthScript : MonoBehaviour
     {
         // Doe hier de Faint dingen
         // Play Animation
-        GetComponentInParent<PokeTeam>()._pokemons.RemoveAt(0);
-        Destroy(gameObject);
-        GetComponentInParent<PokeTeam>()._pokemons[0].SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void Initialise()

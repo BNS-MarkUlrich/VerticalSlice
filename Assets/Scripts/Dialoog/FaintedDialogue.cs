@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaintedDialogue : MonoBehaviour
 {
-    private DialoogTrigger _dialoogTrigger;
+    [SerializeField] private DialoogTrigger _dialoogTrigger;
 
     public void PokemonFainted(string pokemonName)
     {
