@@ -1444,7 +1444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &619238342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2586,8 +2586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242.67781, y: -25.737}
-  m_SizeDelta: {x: 202.5479, y: 42.678}
+  m_AnchoredPosition: {x: -236.12, y: -25.737}
+  m_SizeDelta: {x: 215.67, y: 42.678}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075259677
 MonoBehaviour:
@@ -3619,6 +3619,7 @@ MonoBehaviour:
   pokeTeam: {fileID: 1434911648}
   currentSelection: 0
   currenMove: 0
+  pokemonUI: 0
 --- !u!1 &1520714572
 GameObject:
   m_ObjectHideFlags: 0
