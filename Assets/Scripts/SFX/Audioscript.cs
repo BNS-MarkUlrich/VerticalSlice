@@ -5,25 +5,71 @@ using UnityEngine;
 public class Audioscript : MonoBehaviour
 {
     public AudioClip backgroundMusic;
-    public AudioClip stringshot;
+    public AudioClip stringShot;
     public AudioClip tackle;
     public AudioClip poisonSting;
+    public AudioClip arrowSwitch;
+    public AudioClip faint;
+    public AudioClip buttonPress;
+    public AudioClip pokeball;
+    public AudioClip bulbCry;
+    public AudioClip weedleCry;
+    public AudioClip caterpieCry;
 
     public AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource.PlayOneShot(backgroundMusic);
+    }
+
     public void PlayTackleSFX()
     {
-        Debug.Log("tackle geluiden");
-        audioSource.PlayOneShot(stringshot);
+        audioSource.PlayOneShot(tackle);
     }
 
-    private void Update()
+    public void PlayStringShotSFX()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            PlayTackleSFX();
-        }
-
+        audioSource.PlayOneShot(stringShot);
     }
 
+    public void PlayPoisonStingSFX()
+    {
+        audioSource.PlayOneShot(poisonSting);
+    }
+
+    public void ArrowSwitchSFX()
+    {
+        audioSource.PlayOneShot(arrowSwitch);
+    }
+
+    public void FaintSFX()
+    {
+        audioSource.PlayOneShot(faint);
+    }
+
+    public void ButtonPressSFX() 
+    {
+        audioSource.PlayOneShot(buttonPress);    
+    }
+
+    public void PokeballSFX()
+    {
+        audioSource.PlayOneShot(pokeball);
+    }
+
+    public void CaterpieCrySFX()
+    {
+        audioSource.PlayOneShot(caterpieCry);
+    }
+
+    public void WeedleCrySFX()
+    {
+        audioSource.PlayOneShot(weedleCry);
+    }
+
+    public void BulbasaurCrySFX()
+    {
+        audioSource.PlayOneShot(bulbCry);
+    }
 }

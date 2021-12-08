@@ -1083,12 +1083,12 @@ AudioSource:
   m_GameObject: {fileID: 586762944}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 363ec9459fe192a418de9d55bc7e1400, type: 2}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 81ab433e382aea14ea30a3a3ecc90220, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 98629afa0d1f0c54bbf54555ca7a389a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.07
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1197,9 +1197,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 98629afa0d1f0c54bbf54555ca7a389a, type: 3}
-  stringshot: {fileID: 8300000, guid: 7b3bcbe80d87d6c47ae2c3c10a85dab6, type: 3}
+  stringShot: {fileID: 8300000, guid: 7b3bcbe80d87d6c47ae2c3c10a85dab6, type: 3}
   tackle: {fileID: 8300000, guid: b45d105d217d3b742af3a2e89087e1cd, type: 3}
   poisonSting: {fileID: 8300000, guid: 61867d451db001244a2da4c843ee592c, type: 3}
+  arrowSwitch: {fileID: 8300000, guid: 8f4e96c7c08f125468c2aeee0321e95c, type: 3}
+  faint: {fileID: 8300000, guid: 0bf69dd792fcb6a47aabb60635611664, type: 3}
+  buttonPress: {fileID: 8300000, guid: b2a40a91f375a0f4dafa1c6a2af93905, type: 3}
+  pokeball: {fileID: 8300000, guid: 609811ccd263daf4b88c80a72a6d899b, type: 3}
   audioSource: {fileID: 586762945}
 --- !u!1 &656394202
 GameObject:
@@ -3776,8 +3780,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pokeTeam: {fileID: 722039977}
+  _audioscript: {fileID: 586762947}
   currentSelection: 0
   currenMove: 0
+  pokemonUI: 0
 --- !u!114 &1640379062
 MonoBehaviour:
   m_ObjectHideFlags: 0
