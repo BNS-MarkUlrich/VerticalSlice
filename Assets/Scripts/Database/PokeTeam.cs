@@ -7,9 +7,7 @@ public class PokeTeam : MonoBehaviour
 {
     [SerializeField] public List<GameObject> _pokemons;
 
-    [SerializeField] private Text _nameText;
-    [SerializeField] private Text _genderText;
-    [SerializeField] private Text _levelText;
+    
 
     public PokeTeam oppositeTeam;
 
@@ -24,12 +22,5 @@ public class PokeTeam : MonoBehaviour
         {
             _pokemons[i].SetActive(false);
         }
-    }
-
-    private void Update()
-    {
-        _nameText.text = _pokemons[0].GetComponent<BasePokemon>().pokemonName;
-        _genderText.text = _pokemons[0].GetComponent<BasePokemon>().gender;
-        _levelText.text = "Lv" + _pokemons[0].GetComponent<BasePokemon>().level;
-    }    
+    } 
 }

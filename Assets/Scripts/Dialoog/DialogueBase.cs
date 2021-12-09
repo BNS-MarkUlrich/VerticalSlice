@@ -36,7 +36,7 @@ public class DialogueBase : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                Debug.Log("werkt");
+                //Debug.Log("werkt");
                 _audioscript.ButtonPressSFX();
                 dialoogTrigger.StartDialogue(sentences[index]);
                 index += 1;

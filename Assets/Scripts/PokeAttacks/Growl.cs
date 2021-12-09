@@ -30,15 +30,14 @@ public class Growl : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
-            // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("GROWL", pokemonName.ToUpper());
-            // Mark End
             target.GetComponent<BasePokemon>().GetGrowled();
             _audioscript.PlayGrowlSFX();
         }
         else
         {
-            Debug.Log("Attack Missed");
+            FindObjectOfType<UseMoveDialogue>().MissMove(pokemonName.ToUpper()); // Mark Added
+            Debug.Log(pokemonName.ToUpper() + "Missed" + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
     }

@@ -51,14 +51,14 @@ public class PoisonSting : BaseAttack
             //poisonStingAnim.Play("sting poison sting");
             // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("POISON STING", pokemonName.ToUpper());
-            // Mark End
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             _audioscript.PlayPoisonStingSFX();
             Debug.Log(totalDamage);
         }
         else
         {
-            Debug.Log("Attack Missed");
+            FindObjectOfType<UseMoveDialogue>().MissMove(pokemonName.ToUpper()); // Mark Added
+            Debug.Log(pokemonName.ToUpper() + " Missed " + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
     }
