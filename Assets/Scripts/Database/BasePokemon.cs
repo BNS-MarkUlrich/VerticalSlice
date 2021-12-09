@@ -43,9 +43,9 @@ public class BasePokemon : MonoBehaviour
 
     private void Update()
     {
-        _nameText.text = rivalTeam._pokemons[0].GetComponent<BasePokemon>().pokemonName;
-        _genderText.text = rivalTeam._pokemons[0].GetComponent<BasePokemon>().gender;
-        _levelText.text = "Lv" + rivalTeam._pokemons[0].GetComponent<BasePokemon>().level;
+        _nameText.text = GetComponent<BasePokemon>().pokemonName;
+        _genderText.text = GetComponent<BasePokemon>().gender;
+        _levelText.text = "Lv" + GetComponent<BasePokemon>().level;
 
         rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
         targetPokemon = rivalTeam._pokemons[0];

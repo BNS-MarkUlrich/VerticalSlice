@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class BaseHealthScript : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth;
-    [SerializeField] public int _curHealth;
+    [SerializeField] private float _maxHealth;
+    [SerializeField] public float _curHealth;
     [SerializeField] public Audioscript _audioscript;
 
     public Slider healthSlider;
@@ -27,7 +27,7 @@ public class BaseHealthScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageTaken)
+    public void TakeDamage(float damageTaken)
     {
         _curHealth -= damageTaken;
         //UpdateHP();
