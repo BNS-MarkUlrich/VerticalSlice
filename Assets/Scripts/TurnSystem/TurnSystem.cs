@@ -64,6 +64,8 @@ public class TurnSystem : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
+                    attackTurns[0].fireAttack = false;
+                    player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                     attackTurns[1].Attack();
                     attackTurns.Clear();
                     timer = maxTimer;
@@ -83,6 +85,7 @@ public class TurnSystem : MonoBehaviour
                     timer -= Time.deltaTime;
                     if (timer <= 0)
                     {
+                        rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                         timer = maxTimer;
                         RivalTurn();
                     }
