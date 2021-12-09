@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnSystem : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class TurnSystem : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(player._pokemons[0].GetComponent<Image>().enabled);
         switch (currentState) 
         {
             case TurnSys.PlayerTurn:
@@ -59,10 +61,12 @@ public class TurnSystem : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
+                    //player._pokemons[0].GetComponent<Image>().enabled = false;
                     attackTurns[0].fireAttack = false;
                     player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
+                    rival._pokemons[0].GetComponent<Image>().enabled = true;
                     attackTurns[1].Attack();
-                    attackTurns.Clear();
+                    //player._pokemons[0].GetComponent<Image>().enabled = true;
                     timer = maxTimer;
                     currentState = TurnSys.PostAttackState;
                 }
@@ -84,7 +88,9 @@ public class TurnSystem : MonoBehaviour
                     timer -= Time.deltaTime;
                     if (timer <= 0)
                     {
+                        attackTurns[1].fireAttack = false;
                         rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
+                        attackTurns.Clear();
                         timer = maxTimer;
                         RivalTurn();
                     }
