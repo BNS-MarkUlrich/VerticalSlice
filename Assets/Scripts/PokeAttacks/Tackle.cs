@@ -7,16 +7,19 @@ public class Tackle : BaseAttack
     private GameObject target;
 
     private int level;
-    private double attack;
+    private int attack;
     private int enemyDefence;
 
     private void Start()
     {
         _moveType = "normal";
         _ppMax = 35;
+        _ppAmount = _ppMax; // Mark Added
 
         _dmgValue = 35;
-        _accuracy = 85;
+        _accuracy = 95;
+
+        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
     }
 
     private void Update()
@@ -30,12 +33,16 @@ public class Tackle : BaseAttack
 
     public override void Attack()
     {
-        int totalDamage = (int)((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
+        int totalDamage = ((((2 * level) / 5) + 2) * _dmgValue * (attack / enemyDefence) / 50 + 2);
         int hitOrMiss = Random.Range(1, 100);
 
         if (hitOrMiss <= _accuracy)
         {
+            //play attack animation
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
+            // Mark Begin
+            FindObjectOfType<UseMoveDialogue>().UseMove("TACKLE", pokemonName.ToUpper());
+            // Mark End
             Debug.Log(totalDamage);
         }
         else

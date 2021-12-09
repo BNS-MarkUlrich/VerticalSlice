@@ -8,8 +8,8 @@ public class BasePokemon : MonoBehaviour
     public string gender;
     public int level;
 
-    public int _attack { get; private set; }
-    public int _defence { get; private set; }
+    public int _attack;
+    public int _defence;
     public int trueAttack { get; private set; }
     public int enemyDefence { get; private set; }
     public int _growlCount;
@@ -25,8 +25,6 @@ public class BasePokemon : MonoBehaviour
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
-        trueAttack = 15; // Test
-        _defence = 12; // Test
     }
 
     private void Start()
@@ -39,16 +37,9 @@ public class BasePokemon : MonoBehaviour
         rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
         targetPokemon = rivalTeam._pokemons[0];
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (attacks[0] != null && attacks.Length > 0)
-            {
-                attacks[0].GetComponent<BaseAttack>().Attack();
-            }
-        }
     }
 
-    private void getGrowled()
+    public void GetGrowled()
     {
         _growlCount += 1;
 

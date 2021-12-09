@@ -7,10 +7,12 @@ public abstract class BaseAttack : MonoBehaviour
     protected int _dmgValue;
     protected int _accuracy;
 
-    protected int _ppMax;
-    protected int _ppAmount;
+    public int _ppMax; //{ get; protected set; }
+    public int _ppAmount; //{ get; protected set; }
 
     protected string _moveType;
+
+    protected string pokemonName;
 
     public abstract void Attack();
 }
