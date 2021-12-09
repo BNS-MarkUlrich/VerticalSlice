@@ -11,7 +11,7 @@ public class TurnSystem : MonoBehaviour
 
     public List<BaseAttack> attackTurns;
 
-    [SerializeField] private GameObject dialogueSystem;
+    [SerializeField] public GameObject dialogueSystem;
 
     private RivalAI rivalAI;
 
@@ -64,6 +64,8 @@ public class TurnSystem : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
+                    attackTurns[0].fireAttack = false;
+                    player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                     attackTurns[1].Attack();
                     attackTurns.Clear();
                     timer = maxTimer;
@@ -73,11 +75,32 @@ public class TurnSystem : MonoBehaviour
                 break;
             case TurnSys.PostAttackState:
                 // Do something
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+                if (rival._pokemons[0].GetComponent<BaseHealthScript>()._curHealth <= 0)
                 {
-                    timer = maxTimer;
-                    RivalTurn();
+                    dialogueSystem.GetComponent<FaintedDialogue>().PokemonFainted(rival._pokemons[0].name.ToUpper());
+                    currentState = TurnSys.FeintState;
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                    if (timer <= 0)
+                    {
+                        rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
+                        timer = maxTimer;
+                        RivalTurn();
+                    }
+                }
+                // !Do something
+                break;
+            case TurnSys.FeintState:
+                // Do something
+                if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    Destroy(rival._pokemons[0]);
+                    rival._pokemons.RemoveAt(0);
+                    dialogueSystem.GetComponent<SwapDialogue>().SwapRival();
+                    rival._pokemons[0].SetActive(true);
+                    currentState = TurnSys.PostAttackState;
                 }
                 // !Do something
                 break;
@@ -108,6 +131,7 @@ public class TurnSystem : MonoBehaviour
         DialogueState,
         RivalAttackState,
         PlayerAttackState,
-        PostAttackState
+        PostAttackState,
+        FeintState
     }
 }

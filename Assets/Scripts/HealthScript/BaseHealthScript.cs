@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseHealthScript : MonoBehaviour
 {
@@ -8,19 +9,28 @@ public class BaseHealthScript : MonoBehaviour
     [SerializeField] public int _curHealth;
     [SerializeField] public Audioscript _audioscript;
 
-    private PokeTeam _pokemon;
+    public Slider healthSlider;
+    [SerializeField] private Text _healthText;
+    private float _barHealth;
 
     void Start()
     {
         _curHealth = _maxHealth;
-        _pokemon = GetComponentInParent<PokeTeam>();
-        _pokemon.Initialise(_maxHealth);
+        Initialise();
+    }
+
+    private void Update()
+    {
+        if (_healthText != null)
+        {
+            _healthText.text = _curHealth + "/ " + _maxHealth;
+        }
     }
 
     public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
-        _pokemon.UpdateHP(_curHealth);
+        //UpdateHP();
         //play damaged animation
         if (_curHealth <= 0)
         {
@@ -32,9 +42,20 @@ public class BaseHealthScript : MonoBehaviour
     protected virtual void Faint()
     {
         // Doe hier de Faint dingen
-        Debug.Log("Ik faint");
+        // Play Animation
         _audioscript.FaintSFX();
-        // Temp
-        _curHealth = _maxHealth;
+        gameObject.SetActive(false);
+    }
+
+    public void Initialise()
+    {
+        UpdateHP();
+    }
+
+    public void UpdateHP()
+    {
+        //bar calculations
+        _barHealth = _curHealth / _maxHealth * 100;
+        healthSlider.value = _barHealth;
     }
 }
