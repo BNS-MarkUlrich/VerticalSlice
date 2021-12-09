@@ -6,6 +6,7 @@ public class Growl : BaseAttack
 {
     private GameObject target;
     [SerializeField] Audioscript _audioscript;
+    public Animator growlAnimator;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Growl : BaseAttack
     private void Update()
     {
         target = GetComponentInParent<BasePokemon>().targetPokemon;
+        growlAnimator.SetBool("UseGrowl", fireAttack);
     }
 
     public override void Attack()
@@ -30,6 +32,7 @@ public class Growl : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            fireAttack = true;
             FindObjectOfType<UseMoveDialogue>().UseMove("GROWL", pokemonName.ToUpper());
             target.GetComponent<BasePokemon>().GetGrowled();
             _audioscript.PlayGrowlSFX();

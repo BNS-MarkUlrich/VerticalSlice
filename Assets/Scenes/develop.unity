@@ -2585,7 +2585,7 @@ MonoBehaviour:
   attackTurns: []
   dialogueSystem: {fileID: 283316339}
   controls: 0
-  timer: 2
+  timer: 3
 --- !u!4 &830252665
 Transform:
   m_ObjectHideFlags: 0
