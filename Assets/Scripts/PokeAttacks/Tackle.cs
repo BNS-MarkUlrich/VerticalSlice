@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tackle : BaseAttack
 {
+    [SerializeField] private Audioscript _audioscript;
+
     private GameObject target;
 
     private int level;
@@ -41,7 +43,9 @@ public class Tackle : BaseAttack
             //play attack animation
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             FindObjectOfType<UseMoveDialogue>().UseMove("TACKLE", pokemonName.ToUpper());
-            //Debug.Log(totalDamage);
+            // Mark End
+            _audioscript.PlayTackleSFX();
+            Debug.Log(totalDamage);
         }
         else
         {

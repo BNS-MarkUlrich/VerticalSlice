@@ -5,6 +5,7 @@ using UnityEngine;
 public class Growl : BaseAttack
 {
     private GameObject target;
+    [SerializeField] Audioscript _audioscript;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class Growl : BaseAttack
             //play attack animation
             FindObjectOfType<UseMoveDialogue>().UseMove("GROWL", pokemonName.ToUpper());
             target.GetComponent<BasePokemon>().GetGrowled();
+            _audioscript.PlayGrowlSFX();
         }
         else
         {

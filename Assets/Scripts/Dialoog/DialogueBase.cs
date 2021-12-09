@@ -14,7 +14,7 @@ public class DialogueBase : MonoBehaviour
     public float _timer;
     //scripts
     public DialoogTrigger dialoogTrigger;
-
+    public Audioscript _audioscript;
 
     public void AutoOrNot()
     {
@@ -36,7 +36,8 @@ public class DialogueBase : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                //Debug.Log("werkt"); // Mark Commented
+                //Debug.Log("werkt");
+                _audioscript.ButtonPressSFX();
                 dialoogTrigger.StartDialogue(sentences[index]);
                 index += 1;
             }
