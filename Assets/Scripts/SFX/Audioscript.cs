@@ -20,6 +20,7 @@ public class Audioscript : MonoBehaviour
     public AudioClip lowerStat;
     public AudioClip damage;
     public AudioClip lowHP;
+    public AudioClip gainEXP;
 
     public AudioSource audioSource;
 
@@ -99,6 +100,11 @@ public class Audioscript : MonoBehaviour
     public void LowHPSFX()
     {
         audioSource.PlayOneShot(lowHP);
+    }
+
+    public void GainEXPSFX()
+    {
+        audioSource.PlayOneShot(gainEXP);
     }
 
     private void LowerStatSFX()//

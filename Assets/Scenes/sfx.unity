@@ -1216,6 +1216,7 @@ MonoBehaviour:
   lowerStat: {fileID: 8300000, guid: 9adbbb58b5da7524ea3b84cf5b71f8ca, type: 3}
   damage: {fileID: 8300000, guid: 1c4b52ee8f983b545a5a6105548402c1, type: 3}
   lowHP: {fileID: 8300000, guid: 884200335dbb69849be15b5fddaf8a8d, type: 3}
+  gainEXP: {fileID: 8300000, guid: 8c5d8beeadb36b845a82320e9c43f7de, type: 3}
   audioSource: {fileID: 586762945}
 --- !u!1 &656394202
 GameObject:
