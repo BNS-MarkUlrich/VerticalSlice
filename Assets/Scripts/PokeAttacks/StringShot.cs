@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StringShot : BaseAttack
 {
+    [SerializeField] private Audioscript _audioscript;
     private GameObject target;
 
     private void Start()
@@ -32,6 +33,7 @@ public class StringShot : BaseAttack
             // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("STRING SHOT", pokemonName.ToUpper());
             // Mark End
+            _audioscript.PlayStringShotSFX();
         }
         else
         {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PoisonSting : BaseAttack
 {
+    [SerializeField] private Audioscript _audioscript;
+
     private GameObject target;
 
     //private Animation poisonStingAnim;
@@ -51,6 +53,7 @@ public class PoisonSting : BaseAttack
             FindObjectOfType<UseMoveDialogue>().UseMove("POISON STING", pokemonName.ToUpper());
             // Mark End
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
+            _audioscript.PlayPoisonStingSFX();
             Debug.Log(totalDamage);
         }
         else

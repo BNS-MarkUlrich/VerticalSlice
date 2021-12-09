@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class BaseHealthScript : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth;
-    [SerializeField] public float _curHealth;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] public int _curHealth;
+    [SerializeField] public Audioscript _audioscript;
 
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
@@ -35,12 +36,14 @@ public class BaseHealthScript : MonoBehaviour
         {
             Faint();
         }
+        //_audioscript.TakeDamageSFX();
     }
 
     protected virtual void Faint()
     {
         // Doe hier de Faint dingen
         // Play Animation
+        _audioscript.FaintSFX();
         gameObject.SetActive(false);
     }
 
