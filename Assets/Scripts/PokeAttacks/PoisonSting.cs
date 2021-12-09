@@ -6,6 +6,9 @@ public class PoisonSting : BaseAttack
 {
     private GameObject target;
 
+    //private Animation poisonStingAnim;
+    public Animator poisonStingAnimator;
+
     private int level;
     private int attack;
     private int enemyDefence;
@@ -20,6 +23,7 @@ public class PoisonSting : BaseAttack
         _accuracy = 100;
 
         pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
+        //poisonStingAnim = GetComponent<Animation>();
     }
 
     private void Update()
@@ -29,6 +33,8 @@ public class PoisonSting : BaseAttack
         enemyDefence = GetComponentInParent<BasePokemon>().enemyDefence;
 
         target = GetComponentInParent<BasePokemon>().targetPokemon;
+
+        poisonStingAnimator.SetBool("FirePoisonSting", fireAttack);
     }
 
     public override void Attack()
@@ -39,6 +45,8 @@ public class PoisonSting : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            fireAttack = true;
+            //poisonStingAnim.Play("sting poison sting");
             // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("POISON STING", pokemonName.ToUpper());
             // Mark End

@@ -29,7 +29,7 @@ public class BaseHealthScript : MonoBehaviour
     public void TakeDamage(int damageTaken)
     {
         _curHealth -= damageTaken;
-        UpdateHP();
+        //UpdateHP();
         //play damaged animation
         if (_curHealth <= 0)
         {
