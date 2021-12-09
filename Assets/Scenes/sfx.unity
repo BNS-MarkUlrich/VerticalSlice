@@ -1201,16 +1201,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 98629afa0d1f0c54bbf54555ca7a389a, type: 3}
-  stringShot: {fileID: 8300000, guid: 7b3bcbe80d87d6c47ae2c3c10a85dab6, type: 3}
-  tackle: {fileID: 8300000, guid: b45d105d217d3b742af3a2e89087e1cd, type: 3}
-  poisonSting: {fileID: 8300000, guid: 61867d451db001244a2da4c843ee592c, type: 3}
+  victoryMusic: {fileID: 8300000, guid: 2dcd68ae3505c694283c11acd05371d6, type: 3}
+  stringShot: {fileID: 8300000, guid: 08a1e1897226c26408bf5ab059af7533, type: 3}
+  tackle: {fileID: 8300000, guid: 6ad03c3e52f89464d856ce75af15d04e, type: 3}
+  poisonSting: {fileID: 8300000, guid: a097232f1d2946d4baa406928bf69795, type: 3}
   arrowSwitch: {fileID: 8300000, guid: 8f4e96c7c08f125468c2aeee0321e95c, type: 3}
-  faint: {fileID: 8300000, guid: 0bf69dd792fcb6a47aabb60635611664, type: 3}
+  growl: {fileID: 8300000, guid: 2a0f913ae4be56643af2793c7afaee3e, type: 3}
+  faint: {fileID: 8300000, guid: 3e0ff0cc85763a44b8c43cad72aa8f49, type: 3}
   buttonPress: {fileID: 8300000, guid: b2a40a91f375a0f4dafa1c6a2af93905, type: 3}
-  pokeball: {fileID: 8300000, guid: 609811ccd263daf4b88c80a72a6d899b, type: 3}
+  pokeball: {fileID: 8300000, guid: aa889f2da1311334cae6e4a5c0eb39a8, type: 3}
   bulbCry: {fileID: 8300000, guid: 32d1e7a3f2fc4ce459992a438dd0f3f6, type: 3}
   weedleCry: {fileID: 8300000, guid: ec3e8d2276535fa418bc534b2eafeee5, type: 3}
   caterpieCry: {fileID: 8300000, guid: f2a2252ef6239c24fbbe1dda4884a6a2, type: 3}
+  lowerStat: {fileID: 8300000, guid: 9adbbb58b5da7524ea3b84cf5b71f8ca, type: 3}
+  damage: {fileID: 8300000, guid: 1c4b52ee8f983b545a5a6105548402c1, type: 3}
+  lowHP: {fileID: 8300000, guid: 884200335dbb69849be15b5fddaf8a8d, type: 3}
   audioSource: {fileID: 586762945}
 --- !u!1 &656394202
 GameObject:
@@ -1720,6 +1725,7 @@ MonoBehaviour:
   index: 0
   _timer: 0
   dialoogTrigger: {fileID: 846786991}
+  _audioscript: {fileID: 0}
 --- !u!114 &846786986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1738,6 +1744,7 @@ MonoBehaviour:
   index: 0
   _timer: 0
   dialoogTrigger: {fileID: 846786991}
+  _audioscript: {fileID: 0}
 --- !u!114 &846786987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1798,6 +1805,7 @@ MonoBehaviour:
   index: 0
   _timer: 0
   dialoogTrigger: {fileID: 846786991}
+  _audioscript: {fileID: 586762947}
   _pokemonRival: {fileID: 508823505}
   _pokemonPlayer: {fileID: 722039976}
   _baseDialoog: {fileID: 846786989}
@@ -2399,7 +2407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.1824, y: -187.92255}
+  m_AnchoredPosition: {x: -5.182373, y: -187.92255}
   m_SizeDelta: {x: 34.749, y: -360.487}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169680182
@@ -2536,6 +2544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380762973}
     m_Modifications:
+    - target: {fileID: 7295584805465778144, guid: 41b3cf529cfd7294ca369af67a84f070, type: 3}
+      propertyPath: _audioscript
+      value: 
+      objectReference: {fileID: 586762947}
     - target: {fileID: 7295584805465778174, guid: 41b3cf529cfd7294ca369af67a84f070, type: 3}
       propertyPath: m_Name
       value: Growl
@@ -2875,6 +2887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _curHealth: 0
+  _audioscript: {fileID: 586762947}
 --- !u!114 &1380762975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3604,6 +3617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _curHealth: 0
+  _audioscript: {fileID: 586762947}
 --- !u!114 &1595962978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4465,7 +4479,7 @@ MonoBehaviour:
   attackTurns: []
   dialogueSystem: {fileID: 846786983}
   controls: 0
-  timer: 2
+  timer: 3.5
 --- !u!4 &1789329433
 Transform:
   m_ObjectHideFlags: 0

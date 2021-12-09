@@ -6,6 +6,7 @@ public class BaseHealthScript : MonoBehaviour
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] public int _curHealth;
+    [SerializeField] public Audioscript _audioscript;
 
     private PokeTeam _pokemon;
 
@@ -25,12 +26,14 @@ public class BaseHealthScript : MonoBehaviour
         {
             Faint();
         }
+        //_audioscript.TakeDamageSFX();
     }
 
     protected virtual void Faint()
     {
         // Doe hier de Faint dingen
         Debug.Log("Ik faint");
+        _audioscript.FaintSFX();
         // Temp
         _curHealth = _maxHealth;
     }

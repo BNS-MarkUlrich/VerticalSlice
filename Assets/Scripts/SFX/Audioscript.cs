@@ -5,52 +5,70 @@ using UnityEngine;
 public class Audioscript : MonoBehaviour
 {
     public AudioClip backgroundMusic;
+    public AudioClip victoryMusic;
     public AudioClip stringShot;
     public AudioClip tackle;
     public AudioClip poisonSting;
     public AudioClip arrowSwitch;
+    public AudioClip growl;
     public AudioClip faint;
     public AudioClip buttonPress;
     public AudioClip pokeball;
     public AudioClip bulbCry;
     public AudioClip weedleCry;
     public AudioClip caterpieCry;
+    public AudioClip lowerStat;
+    public AudioClip damage;
+    public AudioClip lowHP;
 
     public AudioSource audioSource;
 
-    private void Start()
+    /*
+     * every function that has a // is already called on. 
+     * Function without // still need to be called on in another script
+     */
+
+    public void PlayTackleSFX() //
     {
-        audioSource.PlayOneShot(backgroundMusic);
+        audioSource.PlayOneShot(tackle, 5);
     }
 
-    public void PlayTackleSFX()
+    public void PlayStringShotSFX()//
     {
-        audioSource.PlayOneShot(tackle);
+        audioSource.PlayOneShot(stringShot, 5);
+        Invoke("LowerStatSFX", 1);
     }
 
-    public void PlayStringShotSFX()
+    public void PlayPoisonStingSFX()//
     {
-        audioSource.PlayOneShot(stringShot);
+        audioSource.PlayOneShot(poisonSting, 5);
     }
 
-    public void PlayPoisonStingSFX()
+    public void PlayGrowlSFX()//
     {
-        audioSource.PlayOneShot(poisonSting);
+        audioSource.PlayOneShot(growl, 5);
+        Invoke("LowerStatSFX", 1);
     }
 
-    public void ArrowSwitchSFX()
+    public void PlayVictorySFX()
     {
-        audioSource.PlayOneShot(arrowSwitch);
+        audioSource.Stop();
+        audioSource.PlayOneShot(victoryMusic);    
     }
 
-    public void FaintSFX()
+    public void ArrowSwitchSFX()//
+    {
+        audioSource.PlayOneShot(arrowSwitch, 0.6f);
+    }
+
+    public void FaintSFX()//
     {
         audioSource.PlayOneShot(faint);
     }
 
-    public void ButtonPressSFX() 
+    public void ButtonPressSFX() //
     {
-        audioSource.PlayOneShot(buttonPress);    
+        audioSource.PlayOneShot(buttonPress, 0.6f);    
     }
 
     public void PokeballSFX()
@@ -58,18 +76,33 @@ public class Audioscript : MonoBehaviour
         audioSource.PlayOneShot(pokeball);
     }
 
-    public void CaterpieCrySFX()
+    public void CaterpieCrySFX()//
     {
         audioSource.PlayOneShot(caterpieCry);
     }
 
-    public void WeedleCrySFX()
+    public void WeedleCrySFX()//
     {
-        audioSource.PlayOneShot(weedleCry);
+        audioSource.PlayOneShot(weedleCry, 0.05f);
     }
 
-    public void BulbasaurCrySFX()
+    public void BulbasaurCrySFX()//
     {
-        audioSource.PlayOneShot(bulbCry);
+        audioSource.PlayOneShot(bulbCry, 12);
+    }
+
+    public void TakeDamageSFX()
+    {
+        audioSource.PlayOneShot(damage);
+    }
+
+    public void LowHPSFX()
+    {
+        audioSource.PlayOneShot(lowHP);
+    }
+
+    private void LowerStatSFX()//
+    {
+        audioSource.PlayOneShot(lowerStat, 5);
     }
 }
