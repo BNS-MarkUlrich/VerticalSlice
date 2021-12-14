@@ -7,15 +7,18 @@ public class BaseHealthScript : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] public float _curHealth;
-
+    [SerializeField] private HealthColor _healthColor;
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
     private float _barHealth;
-
+    [SerializeField] private float timer = 0.1f;
+    private float maxTimer;
     void Start()
     {
         _curHealth = _maxHealth;
         Initialise();
+        _healthColor.ColourGreen();
+        maxTimer = timer;
     }
 
     private void Update()
@@ -24,19 +27,44 @@ public class BaseHealthScript : MonoBehaviour
         {
             _healthText.text = _curHealth + "/ " + _maxHealth;
         }
+        if (this.healthSlider.value <= 20)
+        {
+            _healthColor.ColourRed();
+        }
+        if (this.healthSlider.value <= 50 && healthSlider.value >= 21)
+        {
+            _healthColor.ColourYellow();
+        }
+        timer -= Time.deltaTime;
     }
-
-    public void TakeDamage(int damageTaken)
+    IEnumerator wait()
     {
-        _curHealth -= damageTaken;
-        UpdateHP();
+        yield return new WaitForSeconds(1f);
+    }
+    public void TakeDamage()
+    {
+        
         //play damaged animation
         if (_curHealth <= 0)
         {
             Faint();
+            Debug.Log(".");
         }
     }
-
+    private void dealDamage(int damageTaken)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (timer <= 0)
+            {
+                _curHealth -= damageTaken;
+                Debug.Log(damageTaken);
+                Debug.Log("take damage");
+                UpdateHP();
+                timer = maxTimer;
+            }
+        }
+    }
     protected virtual void Faint()
     {
         // Doe hier de Faint dingen
