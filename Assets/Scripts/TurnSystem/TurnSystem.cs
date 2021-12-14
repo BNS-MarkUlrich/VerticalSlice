@@ -133,7 +133,6 @@ public class TurnSystem : MonoBehaviour
                 {
                     dialogueSystem.GetComponent<LoseDialogue>().enabled = true;
                 }
-
                 break;
             default:
                 break;

@@ -327,6 +327,7 @@ public class OptionScript : MonoBehaviour
                     }
                     break;
 
+
                 case MoveUI.Attack4:
                     int amountPPAttack4;
                     amountPP = attacks[3].GetComponent<BaseAttack>()._ppMax;
@@ -351,6 +352,8 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ButtonPressSFX();
                         fightOptions.gameObject.SetActive(false);
                         arrowAttack4.gameObject.SetActive(false);
+
+
                         arrowAttack1.gameObject.SetActive(true);
                         currenMove = MoveUI.Attack1;
                         options = 1;
