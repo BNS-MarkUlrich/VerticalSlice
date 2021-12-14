@@ -20,14 +20,6 @@ public class BaseHealthScript : MonoBehaviour
         Initialise();
     }
 
-    private void Update()
-    {
-        if (_healthText != null)
-        {
-            _healthText.text = _curHealth + "/ " + _maxHealth;
-        }
-    }
-
     public void TakeDamage(float damageTaken)
     {
         _curHealth -= damageTaken;
@@ -56,6 +48,11 @@ public class BaseHealthScript : MonoBehaviour
 
     public void UpdateHP()
     {
+        if (_healthText != null)
+        {
+            _healthText.text = _curHealth + "/ " + _maxHealth;
+        }
+
         //bar calculations
         _barHealth = _curHealth / _maxHealth * 100;
         healthSlider.value = _barHealth;

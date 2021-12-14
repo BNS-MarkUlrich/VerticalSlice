@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tackle : BaseAttack
 {
     [SerializeField] private Audioscript _audioscript;
 
     private GameObject target;
+
+    [SerializeField] private GameObject thisPokemon;
+
+    public Animator poisonStingAnimator;
 
     private int level;
     private int attack;
@@ -31,6 +36,8 @@ public class Tackle : BaseAttack
         enemyDefence = GetComponentInParent<BasePokemon>().enemyDefence;
 
         target = GetComponentInParent<BasePokemon>().targetPokemon;
+
+        poisonStingAnimator.SetBool("FireTackleAttack", fireAttack);
     }
 
     public override void Attack()
@@ -41,6 +48,7 @@ public class Tackle : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            fireAttack = true;
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             FindObjectOfType<UseMoveDialogue>().UseMove("TACKLE", pokemonName.ToUpper());
             // Mark End
