@@ -43,6 +43,10 @@ public class BasePokemon : MonoBehaviour
 
     private void Update()
     {
+        /*if (attacks.Length < 0)
+        {
+            GetComponent<BasePokemon>().enabled = false;
+        }*/
         _nameText.text = GetComponent<BasePokemon>().pokemonName;
         _genderText.text = GetComponent<BasePokemon>().gender;
         _levelText.text = "Lv" + GetComponent<BasePokemon>().level;

@@ -11,6 +11,11 @@ public class RivalAI : MonoBehaviour
     {
         // Mark Begin
         attacks = GetComponent<PokeTeam>()._pokemons[0].GetComponent<BasePokemon>().attacks;
+        /*if (attacks.Length < 0)
+        {
+            FindObjectOfType<TurnSystem>().currentState = TurnSystem.TurnSys.WinLoseState;
+            GetComponent<RivalAI>().enabled = false;
+        }*/
         // Mark End
     }
 
