@@ -89,6 +89,7 @@ public class TurnSystem : MonoBehaviour
                     if (timer <= 0)
                     {
                         attackTurns[1].fireAttack = false;
+                        attackTurns.Clear();
                         rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                         attackTurns.Clear();
                         timer = maxTimer;

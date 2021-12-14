@@ -6,6 +6,8 @@ public class Growl : BaseAttack
 {
     private GameObject target;
     [SerializeField] Audioscript _audioscript;
+    public Animator growlAnimator;
+    public Animator statsDown;
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class Growl : BaseAttack
     private void Update()
     {
         target = GetComponentInParent<BasePokemon>().targetPokemon;
+        growlAnimator.SetBool("UseGrowl", fireAttack);
     }
 
     public override void Attack()
@@ -30,9 +33,11 @@ public class Growl : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
+            fireAttack = true;
             FindObjectOfType<UseMoveDialogue>().UseMove("GROWL", pokemonName.ToUpper());
             target.GetComponent<BasePokemon>().GetGrowled();
             _audioscript.PlayGrowlSFX();
+            StartCoroutine(Timer());
         }
         else
         {
@@ -40,5 +45,14 @@ public class Growl : BaseAttack
             Debug.Log(pokemonName.ToUpper() + "Missed" + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
+    }
+
+    public IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        fireAttack = false;
+        statsDown.SetBool("AttackDown", true);
+        yield return new WaitForSeconds(0.2f);
+        statsDown.SetBool("AttackDown", false);
     }
 }
