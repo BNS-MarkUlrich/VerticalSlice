@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnSystem : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class TurnSystem : MonoBehaviour
 
     public List<BaseAttack> attackTurns;
 
-    [SerializeField] private GameObject dialogueSystem;
+    [SerializeField] public GameObject dialogueSystem;
 
     private RivalAI rivalAI;
 
@@ -28,58 +29,110 @@ public class TurnSystem : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(player._pokemons[0].GetComponent<Image>().enabled);
         switch (currentState) 
         {
             case TurnSys.PlayerTurn:
-                // Do something
                 controls = true;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(true);
-                // !Do something
+
                 break;
             case TurnSys.RivalTurn:
-                // Call RivalAI script
                 controls = false;
                 rivalAI.Invoke("RivalAIBehaviour", 0);
 
                 dialogueSystem.GetComponent<BaseDialoog>().StartDialogue(player._pokemons[0].name);
                 PlayerTurn();
-                // !Call RivalAI script
+
                 break;
             case TurnSys.DialogueState:
-                // Do something
                 controls = false;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
-                // !Do something
+
                 break;
             case TurnSys.RivalAttackState:
-                // Do something
                 controls = false;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
                 attackTurns[0].Attack();
                 AttackTurn();
-                // !Do something
+
                 break;
             case TurnSys.PlayerAttackState:
-                // Do something
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
+                    //player._pokemons[0].GetComponent<Image>().enabled = false;
+                    attackTurns[0].fireAttack = false;
+                    player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
+                    rival._pokemons[0].GetComponent<Image>().enabled = true;
                     attackTurns[1].Attack();
-                    attackTurns.Clear();
+                    //player._pokemons[0].GetComponent<Image>().enabled = true;
                     timer = maxTimer;
                     currentState = TurnSys.PostAttackState;
                 }
-                // !Do something
+
                 break;
             case TurnSys.PostAttackState:
-                // Do something
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+                if (rival._pokemons[0].GetComponent<BaseHealthScript>()._curHealth <= 0)
                 {
-                    timer = maxTimer;
-                    RivalTurn();
+                    dialogueSystem.GetComponent<FaintedDialogue>().PokemonFainted(rival._pokemons[0].name.ToUpper());
+                    currentState = TurnSys.FeintState;
                 }
-                // !Do something
+                else if (player._pokemons[0].GetComponent<BaseHealthScript>()._curHealth <= 0)
+                {
+                    dialogueSystem.GetComponent<FaintedDialogue>().PokemonFainted(rival._pokemons[0].name.ToUpper());
+                    currentState = TurnSys.FeintState;
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                    if (timer <= 0)
+                    {
+                        attackTurns[1].fireAttack = false;
+                        attackTurns.Clear();
+                        rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
+                        attackTurns.Clear();
+                        timer = maxTimer;
+                        RivalTurn();
+                    }
+                }
+
+                break;
+            case TurnSys.FeintState:
+                if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    if (rival._pokemons.Count <= 0 || player._pokemons.Count <= 0)
+                    {
+                        currentState = TurnSys.WinLoseState;
+                    }
+                    else if (rival._pokemons[0] != null)
+                    {
+                        Destroy(rival._pokemons[0]);
+                        rival._pokemons.RemoveAt(0);
+                        dialogueSystem.GetComponent<SwapDialogue>().SwapRival();
+                        rival._pokemons[0].SetActive(true);
+                        currentState = TurnSys.PostAttackState;
+                    }
+                    else if (player._pokemons[0] != null)
+                    {
+                        Destroy(player._pokemons[0]);
+                        player._pokemons.RemoveAt(0);
+                        dialogueSystem.GetComponent<SwapDialogue>().SwapPlayer();
+                        player._pokemons[0].SetActive(true);
+                        currentState = TurnSys.PostAttackState;
+                    }
+                }
+
+                break;
+            case TurnSys.WinLoseState:
+                if (rival._pokemons.Count <= 0)
+                {
+                    dialogueSystem.GetComponent<WinDialogue>().enabled = true;
+                }
+                else if (player._pokemons.Count <= 0)
+                {
+                    dialogueSystem.GetComponent<LoseDialogue>().enabled = true;
+                }
                 break;
             default:
                 break;
@@ -108,6 +161,8 @@ public class TurnSystem : MonoBehaviour
         DialogueState,
         RivalAttackState,
         PlayerAttackState,
-        PostAttackState
+        PostAttackState,
+        FeintState,
+        WinLoseState
     }
 }

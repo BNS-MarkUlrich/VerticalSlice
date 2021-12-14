@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StringShot : BaseAttack
 {
+    [SerializeField] private Audioscript _audioscript;
     private GameObject target;
 
     private void Start()
@@ -29,13 +30,14 @@ public class StringShot : BaseAttack
         if (hitOrMiss <= _accuracy)
         {
             //play attack animation
-            // Mark Begin
             FindObjectOfType<UseMoveDialogue>().UseMove("STRING SHOT", pokemonName.ToUpper());
             // Mark End
+            _audioscript.PlayStringShotSFX();
         }
         else
         {
-            Debug.Log("Attack Missed");
+            FindObjectOfType<UseMoveDialogue>().MissMove(pokemonName.ToUpper()); // Mark Added
+            Debug.Log(pokemonName.ToUpper() + "Missed" + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasePokemon : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class BasePokemon : MonoBehaviour
     public string gender;
     public int level;
 
-    public int _attack { get; private set; }
-    public int _defence { get; private set; }
+    public int _attack;
+    public int _defence;
     public int trueAttack { get; private set; }
     public int enemyDefence { get; private set; }
     public int _growlCount;
@@ -21,24 +22,42 @@ public class BasePokemon : MonoBehaviour
     public BaseAttack[] attacks;
     [SerializeField] private Genders _currenState = Genders.Male;
 
+    [SerializeField] private Text _nameText;
+    [SerializeField] private Text _genderText;
+    [SerializeField] private Text _levelText;
+
     private void Awake()
     {
         SetGender();
         pokemonName = gameObject.name.ToUpper();
-        trueAttack = 15; // Test
-        _defence = 12; // Test
     }
 
     private void Start()
     {
         attacks = GetComponentsInChildren<BaseAttack>();
+
+        rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
+        targetPokemon = rivalTeam._pokemons[0];
+        enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
     }
 
     private void Update()
     {
+        /*if (attacks.Length < 0)
+        {
+            GetComponent<BasePokemon>().enabled = false;
+        }*/
+        _nameText.text = GetComponent<BasePokemon>().pokemonName;
+        _genderText.text = GetComponent<BasePokemon>().gender;
+        _levelText.text = "Lv" + GetComponent<BasePokemon>().level;
+
         rivalTeam = GetComponentInParent<PokeTeam>().oppositeTeam;
         targetPokemon = rivalTeam._pokemons[0];
         enemyDefence = targetPokemon.GetComponent<BasePokemon>()._defence;
+        if (targetPokemon == null)
+        {
+            Debug.Log("I have no target!");
+        }
     }
 
     public void GetGrowled()
