@@ -54,7 +54,7 @@ public class TurnSystem : MonoBehaviour
                 controls = false;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
                 attackTurns[0].Attack();
-                AttackTurn();
+                StartCoroutine(TimerDialogueEnemy());
 
                 break;
             case TurnSys.PlayerAttackState:
@@ -66,9 +66,9 @@ public class TurnSystem : MonoBehaviour
                     player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                     rival._pokemons[0].GetComponent<Image>().enabled = true;
                     attackTurns[1].Attack();
-                    //player._pokemons[0].GetComponent<Image>().enabled = true;
-                    timer = maxTimer;
                     currentState = TurnSys.PostAttackState;
+                    timer = maxTimer;
+                    //player._pokemons[0].GetComponent<Image>().enabled = true;
                 }
 
                 break;
@@ -89,11 +89,10 @@ public class TurnSystem : MonoBehaviour
                     if (timer <= 0)
                     {
                         attackTurns[1].fireAttack = false;
-                        attackTurns.Clear();
                         rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
-                        attackTurns.Clear();
+                        dialogueSystem.GetComponent<UseMoveDialogue>().StatChange(rival._pokemons[0].name.ToUpper(), attackTurns[1].name.ToUpper());
+                        StartCoroutine(TimerDialoguePlayer());
                         timer = maxTimer;
-                        RivalTurn();
                     }
                 }
 
@@ -152,6 +151,21 @@ public class TurnSystem : MonoBehaviour
     public void AttackTurn()
     {
         currentState = TurnSys.PlayerAttackState;
+    }
+
+    public IEnumerator TimerDialogueEnemy()
+    {
+        yield return new WaitForSeconds(1.5f);
+        dialogueSystem.GetComponent<UseMoveDialogue>().StatChange(player._pokemons[0].name.ToUpper(), attackTurns[0].name.ToUpper());
+        AttackTurn();
+    }
+
+    public IEnumerator TimerDialoguePlayer()
+    {
+         yield return new WaitForSeconds(1.5f);
+         attackTurns.Clear();
+         RivalTurn();
+
     }
 
     public enum TurnSys
