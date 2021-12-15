@@ -2620,10 +2620,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 23
   _curHealth: 0
+  _healthColor: {fileID: 989680615}
   _audioscript: {fileID: 230699556}
   _hitAni: {fileID: 739308006}
   healthSlider: {fileID: 1957946435}
   _healthText: {fileID: 1637297840}
+  timer: 0.1
 --- !u!114 &797425420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2729,6 +2731,7 @@ GameObject:
   - component: {fileID: 837346030}
   - component: {fileID: 837346032}
   - component: {fileID: 837346031}
+  - component: {fileID: 837346033}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -2793,6 +2796,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837346029}
   m_CullTransparentMesh: 1
+--- !u!114 &837346033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837346029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c955b5f680d9a1b428b46c3fcc1a994e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillColour: {fileID: 0}
 --- !u!1 &841469966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3202,7 @@ GameObject:
   - component: {fileID: 989680612}
   - component: {fileID: 989680614}
   - component: {fileID: 989680613}
+  - component: {fileID: 989680615}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -3250,6 +3267,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989680611}
   m_CullTransparentMesh: 1
+--- !u!114 &989680615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989680611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c955b5f680d9a1b428b46c3fcc1a994e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillColour: {fileID: 0}
 --- !u!1 &1013853195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3346,10 +3376,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   _curHealth: 0
+  _healthColor: {fileID: 837346033}
   _audioscript: {fileID: 230699556}
   _hitAni: {fileID: 0}
   healthSlider: {fileID: 196040527}
   _healthText: {fileID: 0}
+  timer: 0.1
 --- !u!114 &1013853200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3933,6 +3965,7 @@ GameObject:
   - component: {fileID: 1200563580}
   - component: {fileID: 1200563582}
   - component: {fileID: 1200563581}
+  - component: {fileID: 1200563583}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -3997,6 +4030,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200563579}
   m_CullTransparentMesh: 1
+--- !u!114 &1200563583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200563579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c955b5f680d9a1b428b46c3fcc1a994e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillColour: {fileID: 0}
 --- !u!224 &1267995542 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5205368510759358932, guid: 41b3cf529cfd7294ca369af67a84f070, type: 3}
@@ -6337,10 +6383,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   _curHealth: 0
+  _healthColor: {fileID: 1200563583}
   _audioscript: {fileID: 230699556}
   _hitAni: {fileID: 0}
   healthSlider: {fileID: 747761937}
   _healthText: {fileID: 0}
+  timer: 0.1
 --- !u!114 &2056841151
 MonoBehaviour:
   m_ObjectHideFlags: 0
