@@ -10,11 +10,13 @@ public class BaseHealthScript : MonoBehaviour
     [SerializeField] private HealthColor _healthColor;
     [SerializeField] public Audioscript _audioscript;
     [SerializeField] private Animator _hitAni;
-
+    private float damageTaken;
+    private bool damage;
+    private int healthdamage;
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
     private float _barHealth;
-    [SerializeField] private float timer = 0.1f;
+    [SerializeField] private float timer = 0.98f;
     private float maxTimer;
     void Start()
     {
@@ -38,38 +40,44 @@ public class BaseHealthScript : MonoBehaviour
         {
             _healthColor.ColourYellow();
         }
+        if (damage)
+        {
+            _curHealth -= damageTaken * Time.deltaTime;
+            Debug.Log(_curHealth);
+            UpdateHP();
+            //Debug.Log("dealDamage");
+            if (timer <= 0)
+            {
+                _curHealth = (int)_curHealth;
+                timer = 0.98f;
+                damage = false;
+            }
+        }
         timer -= Time.deltaTime;
+        if (damage == false)
+        {
+            timer = 0.98f;
+        }
+
+
     }
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1f);
     }
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageTakens)
     {
-        _curHealth -= damageTaken;
+        damageTaken = damageTakens;
+        damage = true;
         //UpdateHP();
         //play damaged animation
         StartCoroutine(Timer());
         if (_curHealth <= 0)
         {
+
             Faint();
             Debug.Log(".");
         }
-    }
-    private void dealDamage(int damageTaken)
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            if (timer <= 0)
-            {
-                _curHealth -= damageTaken;
-                Debug.Log(damageTaken);
-                Debug.Log("take damage");
-                UpdateHP();
-                timer = maxTimer;
-            }
-        }
-        //_audioscript.TakeDamageSFX();
     }
     protected virtual void Faint()
     {
@@ -88,12 +96,12 @@ public class BaseHealthScript : MonoBehaviour
     {
         if (_healthText != null)
         {
-            _healthText.text = _curHealth + "/ " + _maxHealth;
+            _healthText.text = (int)_curHealth + "/ " + _maxHealth;
         }
-
-        //bar calculations
         _barHealth = _curHealth / _maxHealth * 100;
         healthSlider.value = _barHealth;
+        //bar calculations
+
     }
     public IEnumerator Timer()
     {
