@@ -9,6 +9,8 @@ public class BaseHealthScript : MonoBehaviour
     [SerializeField] public float _curHealth;
     [SerializeField] public Audioscript _audioscript;
     [SerializeField] private Animator _hitAni;
+    public Image pokemonImage;
+    public float timerAni;
 
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
@@ -30,7 +32,7 @@ public class BaseHealthScript : MonoBehaviour
         {
             Faint();
         }
-        //_audioscript.TakeDamageSFX();
+        
     }
 
     protected virtual void Faint()
@@ -59,8 +61,13 @@ public class BaseHealthScript : MonoBehaviour
     }
     public IEnumerator Timer()
     {
+        yield return new WaitForSeconds(2);
         _hitAni.SetBool("isHit", true);
-        yield return new WaitForSeconds(1);
+        pokemonImage.enabled = false;
+        _audioscript.TakeDamageSFX();
+        yield return new WaitForSeconds(0.1f);
         _hitAni.SetBool("isHit", false);
+        yield return new WaitForSeconds(timerAni);
+        pokemonImage.enabled = true;
     }
 }
