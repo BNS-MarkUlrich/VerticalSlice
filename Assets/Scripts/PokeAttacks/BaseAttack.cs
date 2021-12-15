@@ -14,5 +14,7 @@ public abstract class BaseAttack : MonoBehaviour
 
     protected string pokemonName;
 
+    public bool fireAttack;
+
     public abstract void Attack();
 }

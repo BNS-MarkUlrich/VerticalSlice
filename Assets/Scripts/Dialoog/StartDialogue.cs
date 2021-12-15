@@ -35,6 +35,15 @@ public class StartDialogue : DialogueBase
         }
         else
         {
+            if (index == 2)
+            {
+                _audioscript.WeedleCrySFX();
+            }
+            else if(index == 3)
+            {
+                _audioscript.BulbasaurCrySFX();
+            }
+            
             AutoOrNot();
         }
     }
