@@ -18,13 +18,13 @@ public class BaseHealthScript : MonoBehaviour
     private float maxTimer;
     void Start()
     {
+        _healthColor.ColourGreen();
         _curHealth = _maxHealth;
         Initialise();
-        _healthColor.ColourGreen();
         maxTimer = timer;
     }
 
-    private void Update()
+    public void Update()
     {
         if (_healthText != null)
         {
