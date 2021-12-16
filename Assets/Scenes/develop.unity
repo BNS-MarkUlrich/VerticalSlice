@@ -3620,7 +3620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e20d1a8ea0689458cab59a56f6caf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 8
   _curHealth: 0
   _healthColor: {fileID: 837346033}
   _audioscript: {fileID: 230699556}
@@ -7222,7 +7222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e20d1a8ea0689458cab59a56f6caf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
+  _maxHealth: 8
   _curHealth: 0
   _healthColor: {fileID: 1200563583}
   _audioscript: {fileID: 230699556}
