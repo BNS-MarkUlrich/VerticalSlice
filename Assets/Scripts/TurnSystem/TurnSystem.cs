@@ -33,6 +33,7 @@ public class TurnSystem : MonoBehaviour
         switch (currentState) 
         {
             case TurnSys.PlayerTurn:
+                timer = maxTimer;
                 controls = true;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(true);
 
@@ -53,7 +54,6 @@ public class TurnSystem : MonoBehaviour
             case TurnSys.RivalAttackState:
                 controls = false;
                 FindObjectOfType<OptionScript>().optionsMenu.SetActive(false);
-                attackTurns[0].Attack();
                 StartCoroutine(TimerDialogueEnemy());
 
                 break;
@@ -66,8 +66,8 @@ public class TurnSystem : MonoBehaviour
                     player._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                     rival._pokemons[0].GetComponent<Image>().enabled = true;
                     attackTurns[1].Attack();
-                    currentState = TurnSys.PostAttackState;
                     timer = maxTimer;
+                    currentState = TurnSys.PostAttackState;
                     //player._pokemons[0].GetComponent<Image>().enabled = true;
                 }
 
@@ -91,8 +91,8 @@ public class TurnSystem : MonoBehaviour
                         attackTurns[1].fireAttack = false;
                         rival._pokemons[0].GetComponent<BaseHealthScript>().UpdateHP();
                         dialogueSystem.GetComponent<UseMoveDialogue>().StatChange(rival._pokemons[0].name.ToUpper(), attackTurns[1].name.ToUpper());
-                        StartCoroutine(TimerDialoguePlayer());
                         timer = maxTimer;
+                        StartCoroutine(TimerDialoguePlayer());
                     }
                 }
 
@@ -155,9 +155,11 @@ public class TurnSystem : MonoBehaviour
 
     public IEnumerator TimerDialogueEnemy()
     {
+        AttackTurn();
+        attackTurns[0].Attack();
         yield return new WaitForSeconds(1.5f);
         dialogueSystem.GetComponent<UseMoveDialogue>().StatChange(player._pokemons[0].name.ToUpper(), attackTurns[0].name.ToUpper());
-        AttackTurn();
+        
     }
 
     public IEnumerator TimerDialoguePlayer()
