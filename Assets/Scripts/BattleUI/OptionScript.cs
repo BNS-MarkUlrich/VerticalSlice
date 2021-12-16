@@ -64,7 +64,7 @@ public class OptionScript : MonoBehaviour
                         arrowPokemon.gameObject.SetActive(true);
                     }
 
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 1)
                     {
                         _audioscript.ButtonPressSFX();
                         fightOptions.gameObject.SetActive(true);
@@ -101,7 +101,7 @@ public class OptionScript : MonoBehaviour
                         arrowBag.gameObject.SetActive(false);
                         arrowRun.gameObject.SetActive(true);
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 1)
                     {
                         _audioscript.ButtonPressSFX();
                     }
@@ -122,11 +122,13 @@ public class OptionScript : MonoBehaviour
                         arrowPokemon.gameObject.SetActive(false);
                         arrowFight.gameObject.SetActive(true);
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 1)
+                    /*
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter)|| Input.GetKeyDown(KeyCode.Return)) && options == 1)
                     {
                         _audioscript.ButtonPressSFX();
                         options = 2.2f;
                     }
+                    */
                     break;
 
                 case FightUI.RUN:
@@ -144,7 +146,7 @@ public class OptionScript : MonoBehaviour
                         arrowRun.gameObject.SetActive(false);
                         arrowBag.gameObject.SetActive(true);
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter)|| Input.GetKeyDown(KeyCode.Return)) && options == 1)
                     {
                         _audioscript.ButtonPressSFX();
                     }
@@ -183,12 +185,12 @@ public class OptionScript : MonoBehaviour
                         fightOptions.gameObject.SetActive(false);
                         options = 1;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 2.1f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) ||Input.GetKeyDown(KeyCode.Return)) && options == 2.1f)
                     {
                         _audioscript.ButtonPressSFX();
                         options = 3.1f;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack1 >= 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack1 >= 1)
                     {
                         _audioscript.ButtonPressSFX();
                         if (attacks[0] != null && attacks.Length > 0)
@@ -205,7 +207,7 @@ public class OptionScript : MonoBehaviour
                         //Debug.Log("bulbasaur used " + attacks[0].name); // Mark Edit
                         // Mark End
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack1 <= 0)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack1 <= 0)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("don't have enough for tackle");
@@ -245,7 +247,7 @@ public class OptionScript : MonoBehaviour
                         arrowAttack1.gameObject.SetActive(true);
                         options = 1;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack2 >= 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack2 >= 1)
                     {
                         _audioscript.ButtonPressSFX();
                         if (attacks[1] != null && attacks.Length > 0)
@@ -265,7 +267,7 @@ public class OptionScript : MonoBehaviour
                         //Debug.Log("bulbasaur used " + attacks[1].name); // Mark Edit
                         // Mark End
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && amountPPAttack2 <= 0)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && amountPPAttack2 <= 0)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("don't have enough for growl");
@@ -300,7 +302,7 @@ public class OptionScript : MonoBehaviour
                         currenMove = MoveUI.Attack1;
                         options = 1;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack3 >= 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack3 >= 1)
                     {
                         _audioscript.ButtonPressSFX();
                         if (attacks[2] != null && attacks.Length > 0)
@@ -320,7 +322,7 @@ public class OptionScript : MonoBehaviour
                         //Debug.Log("bulbasaur used " + attacks[2].name); // Mark Edit
                         // Mark End
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack3 <= 0)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack3 <= 0)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("don't have enough for growl");
@@ -358,7 +360,7 @@ public class OptionScript : MonoBehaviour
                         currenMove = MoveUI.Attack1;
                         options = 1;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack4 >= 1)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack4 >= 1)
                     {
                         _audioscript.ButtonPressSFX();
                         if (attacks[3] != null && attacks.Length > 0)
@@ -378,7 +380,7 @@ public class OptionScript : MonoBehaviour
                         //Debug.Log("bulbasaur used " + attacks[3].name); // Mark Edit
                         // Mark End
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.1f && amountPPAttack4 <= 0)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.1f && amountPPAttack4 <= 0)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("don't have enough for growl");
@@ -386,6 +388,7 @@ public class OptionScript : MonoBehaviour
                     break;
             }
             // navigating PokemonUI for when there's a pokemonUI
+            /*
             switch (pokemonUI)
             {
                 case PokemonUI.Pokemon1:
@@ -399,12 +402,12 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon6;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 2.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 2.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         options = 3.2f;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -426,7 +429,7 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon1;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -449,7 +452,7 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon2;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -472,7 +475,7 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon3;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -495,7 +498,7 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon4;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -518,7 +521,7 @@ public class OptionScript : MonoBehaviour
                         _audioscript.ArrowSwitchSFX();
                         pokemonUI = PokemonUI.Pokemon5;
                     }
-                    else if (Input.GetKeyDown(KeyCode.KeypadEnter) && options == 3.2f)
+                    else if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && options == 3.2f)
                     {
                         _audioscript.ButtonPressSFX();
                         Debug.Log("something happenes here");
@@ -531,6 +534,7 @@ public class OptionScript : MonoBehaviour
                     }
                     break;
             }
+            */
 
         }
 
