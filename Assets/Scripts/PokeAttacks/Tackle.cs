@@ -17,6 +17,8 @@ public class Tackle : BaseAttack
     private int attack;
     private int enemyDefence;
 
+    public float aniTimer = 0.405f;
+
     private void Start()
     {
         _moveType = "normal";
@@ -26,7 +28,7 @@ public class Tackle : BaseAttack
         _dmgValue = 35;
         _accuracy = 95;
 
-        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added
+        pokemonName = GetComponentInParent<BasePokemon>().name; // Mark Added      
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class Tackle : BaseAttack
         {
             //play attack animation
             fireAttack = true;
+            StartCoroutine(Timer());
             target.GetComponent<BaseHealthScript>().TakeDamage(totalDamage);
             FindObjectOfType<UseMoveDialogue>().UseMove("TACKLE", pokemonName.ToUpper());
             // Mark End
@@ -61,5 +64,13 @@ public class Tackle : BaseAttack
             Debug.Log(pokemonName.ToUpper() + "Missed" + gameObject.name.ToUpper());
         }
         _ppAmount -= 1;
+    }
+
+    public IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(0.05f);
+        thisPokemon.GetComponent<Image>().enabled = false;
+        yield return new WaitForSeconds(aniTimer);
+        thisPokemon.GetComponent<Image>().enabled = true;
     }
 }

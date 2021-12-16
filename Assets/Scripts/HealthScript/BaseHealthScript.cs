@@ -7,32 +7,81 @@ public class BaseHealthScript : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] public float _curHealth;
+    [SerializeField] private HealthColor _healthColor;
     [SerializeField] public Audioscript _audioscript;
     [SerializeField] private Animator _hitAni;
+    public Image pokemonImage;
+    public float timerAni;
+
+    private float damageTaken;
+    private bool damage;
 
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
     private float _barHealth;
-
+    private float timer = 0.98f;
+    private float maxTimer;
     void Start()
     {
+        _audioscript = FindObjectOfType<Audioscript>();
+        _healthColor.ColourGreen();
         _curHealth = _maxHealth;
         Initialise();
+        maxTimer = timer;
     }
 
-    public void TakeDamage(float damageTaken)
+    public void Update()
     {
-        _curHealth -= damageTaken;
+        if (_healthText != null)
+        {
+            _healthText.text = _curHealth + "/ " + _maxHealth;
+        }
+        if (this.healthSlider.value <= 20)
+        {
+            _healthColor.ColourRed();
+        }
+        if (this.healthSlider.value <= 50 && healthSlider.value >= 21)
+        {
+            _healthColor.ColourYellow();
+        }
+        if (damage)
+        {
+            _curHealth -= damageTaken * Time.deltaTime;
+            Debug.Log(_curHealth);
+            UpdateHP();
+            //Debug.Log("dealDamage");
+            if (timer <= 0)
+            {
+                _curHealth = (int)_curHealth;
+                timer = 0.98f;
+                damage = false;
+            }
+        }
+        timer -= Time.deltaTime;
+        if (damage == false)
+        {
+            timer = 0.98f;
+        }
+
+
+    }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+    public void TakeDamage(float damageTakens)
+    {
+        damageTaken = damageTakens;
+        
         //UpdateHP();
         //play damaged animation
         StartCoroutine(Timer());
         if (_curHealth <= 0)
         {
+
             Faint();
         }
-        //_audioscript.TakeDamageSFX();
     }
-
     protected virtual void Faint()
     {
         // Doe hier de Faint dingen
@@ -50,17 +99,23 @@ public class BaseHealthScript : MonoBehaviour
     {
         if (_healthText != null)
         {
-            _healthText.text = _curHealth + "/ " + _maxHealth;
+            _healthText.text = (int)_curHealth + "/ " + _maxHealth;
         }
-
-        //bar calculations
         _barHealth = _curHealth / _maxHealth * 100;
         healthSlider.value = _barHealth;
+        //bar calculations
+
     }
     public IEnumerator Timer()
     {
+        yield return new WaitForSeconds(2);
+        damage = true;
         _hitAni.SetBool("isHit", true);
-        yield return new WaitForSeconds(1);
+        pokemonImage.enabled = false;
+        _audioscript.TakeDamageSFX();
+        yield return new WaitForSeconds(0.1f);
         _hitAni.SetBool("isHit", false);
+        yield return new WaitForSeconds(timerAni);
+        pokemonImage.enabled = true;
     }
 }
