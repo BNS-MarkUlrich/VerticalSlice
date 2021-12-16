@@ -13,6 +13,9 @@ public class BaseHealthScript : MonoBehaviour
     public Image pokemonImage;
     public float timerAni;
 
+    private float damageTaken;
+    private bool damage;
+
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
     private float _barHealth;
