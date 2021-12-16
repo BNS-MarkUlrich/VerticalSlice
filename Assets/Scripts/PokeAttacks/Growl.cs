@@ -24,6 +24,7 @@ public class Growl : BaseAttack
     {
         target = GetComponentInParent<BasePokemon>().targetPokemon;
         growlAnimator.SetBool("UseGrowl", fireAttack);
+        statsDown = target.GetComponentInChildren<Animator>();
     }
 
     public override void Attack()
