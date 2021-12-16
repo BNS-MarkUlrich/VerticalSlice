@@ -18,6 +18,7 @@ public class BaseHealthScript : MonoBehaviour
 
     void Start()
     {
+        _audioscript = FindObjectOfType<Audioscript>();
         _curHealth = _maxHealth;
         Initialise();
     }
