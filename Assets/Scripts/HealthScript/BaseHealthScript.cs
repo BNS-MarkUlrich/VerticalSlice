@@ -23,11 +23,8 @@ public class BaseHealthScript : MonoBehaviour
     private float maxTimer;
     void Start()
     {
-<<<<<<< HEAD
         _audioscript = FindObjectOfType<Audioscript>();
-=======
         _healthColor.ColourGreen();
->>>>>>> 0e39b7e52673c952391403edd826f44cb25e5caa
         _curHealth = _maxHealth;
         Initialise();
         maxTimer = timer;
