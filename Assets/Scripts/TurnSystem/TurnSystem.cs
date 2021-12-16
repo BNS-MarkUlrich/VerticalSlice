@@ -76,11 +76,13 @@ public class TurnSystem : MonoBehaviour
                 if (rival._pokemons[0].GetComponent<BaseHealthScript>()._curHealth <= 0)
                 {
                     dialogueSystem.GetComponent<FaintedDialogue>().PokemonFainted(rival._pokemons[0].name.ToUpper());
+                    rival._pokemons[0].SetActive(false);                    
                     currentState = TurnSys.FeintState;
                 }
                 else if (player._pokemons[0].GetComponent<BaseHealthScript>()._curHealth <= 0)
                 {
                     dialogueSystem.GetComponent<FaintedDialogue>().PokemonFainted(rival._pokemons[0].name.ToUpper());
+                    rival._pokemons[0].SetActive(false);
                     currentState = TurnSys.FeintState;
                 }
                 else

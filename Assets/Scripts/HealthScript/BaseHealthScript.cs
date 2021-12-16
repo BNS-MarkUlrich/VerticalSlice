@@ -19,7 +19,7 @@ public class BaseHealthScript : MonoBehaviour
     public Slider healthSlider;
     [SerializeField] private Text _healthText;
     private float _barHealth;
-    [SerializeField] private float timer = 0.98f;
+    private float timer = 0.98f;
     private float maxTimer;
     void Start()
     {
@@ -71,7 +71,7 @@ public class BaseHealthScript : MonoBehaviour
     public void TakeDamage(float damageTakens)
     {
         damageTaken = damageTakens;
-        damage = true;
+        
         //UpdateHP();
         //play damaged animation
         StartCoroutine(Timer());
@@ -79,7 +79,6 @@ public class BaseHealthScript : MonoBehaviour
         {
 
             Faint();
-            Debug.Log(".");
         }
     }
     protected virtual void Faint()
@@ -109,6 +108,7 @@ public class BaseHealthScript : MonoBehaviour
     public IEnumerator Timer()
     {
         yield return new WaitForSeconds(2);
+        damage = true;
         _hitAni.SetBool("isHit", true);
         pokemonImage.enabled = false;
         _audioscript.TakeDamageSFX();

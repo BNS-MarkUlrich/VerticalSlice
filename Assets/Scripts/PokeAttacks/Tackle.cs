@@ -17,6 +17,8 @@ public class Tackle : BaseAttack
     private int attack;
     private int enemyDefence;
 
+    public float aniTimer = 0.405f;
+
     private void Start()
     {
         _moveType = "normal";
@@ -68,7 +70,7 @@ public class Tackle : BaseAttack
     {
         yield return new WaitForSeconds(0.05f);
         thisPokemon.GetComponent<Image>().enabled = false;
-        yield return new WaitForSeconds(0.405f);
+        yield return new WaitForSeconds(aniTimer);
         thisPokemon.GetComponent<Image>().enabled = true;
     }
 }
