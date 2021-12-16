@@ -34,7 +34,7 @@ public class DialogueBase : MonoBehaviour
         }
         else 
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
                 //Debug.Log("werkt");
                 _audioscript.ButtonPressSFX();
