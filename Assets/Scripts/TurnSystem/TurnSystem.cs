@@ -100,7 +100,7 @@ public class TurnSystem : MonoBehaviour
 
                 break;
             case TurnSys.FeintState:
-                if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
                 {
                     if (rival._pokemons.Count <= 0 || player._pokemons.Count <= 0)
                     {
